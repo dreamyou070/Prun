@@ -1,0 +1,94 @@
+2024-11-03 17:36:37,053 - __main__ - INFO - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+ step 2. Create the noise scheduler and the desired noise schedule.
+
+{'variance_type'} was not found in config. Values will be initialized to default values.
+ step 3. get model
+ (3.1) teacher model
+ teacher adapter calling
+{'motion_transformer_layers_per_mid_block', 'motion_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+ teacher base pipe calling
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'num_attention_heads', 'addition_time_embed_dim', 'transformer_layers_per_block', 'reverse_transformer_layers_per_block', 'attention_type', 'dropout'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  33%|█████████████████████████████████████████████████████████████████████████                                                                                                                                                  | 2/6 [00:00<00:00, 19.81it/s]Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                    | 5/6 [00:00<00:00, 12.34it/s]{'latents_mean', 'latents_std', 'force_upcast', 'shift_factor', 'use_post_quant_conv', 'use_quant_conv'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 14.24it/s]
+{'transformer_layers_per_mid_block', 'reverse_temporal_transformer_layers_per_block', 'reverse_motion_num_attention_heads', 'mid_block_layers'} was not found in config. Values will be initialized to default values.
+ teacher lora loading
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (3.2) sub models
+ (3.3) create online unet
+{'motion_transformer_layers_per_mid_block', 'motion_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'num_attention_heads', 'addition_time_embed_dim', 'transformer_layers_per_block', 'reverse_transformer_layers_per_block', 'attention_type', 'dropout'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  50%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                             | 3/6 [00:00<00:00, 21.57it/s]Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+{'latents_mean', 'latents_std', 'force_upcast', 'shift_factor', 'use_post_quant_conv', 'use_quant_conv'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 14.24it/s]
+{'transformer_layers_per_mid_block', 'reverse_temporal_transformer_layers_per_block', 'reverse_motion_num_attention_heads', 'mid_block_layers'} was not found in config. Values will be initialized to default values.
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (2.3) target student U-Net
+ step 3. weight and device
+2024-11-03 17:36:59,399 - __main__ - INFO -
+ step 6. preparing dataset (and loader)
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+2024-11-03 17:36:59,825 - __main__ - INFO - ***** Running training *****
+2024-11-03 17:36:59,826 - __main__ - INFO -   Num Epochs = 30000
+2024-11-03 17:36:59,826 - __main__ - INFO -   Instantaneous batch size per device = 1
+2024-11-03 17:36:59,826 - __main__ - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 1
+2024-11-03 17:36:59,826 - __main__ - INFO -   Gradient Accumulation steps = 1
+2024-11-03 17:36:59,826 - __main__ - INFO -   Total optimization steps = 30000
+Steps:   0%|                                                                                                                                                                                                                                             | 1/30000 [00:06<50:28:41,  6.06s/it]2024-11-03 17:37:06,663 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmph954zjim/test.c -o /tmp/tmph954zjim/test.o
+[2024-11-03 17:37:06,118] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/dreamyou070/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+2024-11-03 17:37:06,880 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmph954zjim/test.o -laio -o /tmp/tmph954zjim/a.out
+2024-11-03 17:37:07,790 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmprfa9dpzv/test.c -o /tmp/tmprfa9dpzv/test.o
+2024-11-03 17:37:08,006 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmprfa9dpzv/test.o -L/opt/ohpc/pub/apps/cuda/12.5 -L/opt/ohpc/pub/apps/cuda/12.5/lib64 -lcufile -o /tmp/tmprfa9dpzv/a.out
+2024-11-03 17:37:08,256 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmpmtnalz88/test.c -o /tmp/tmpmtnalz88/test.o
+2024-11-03 17:37:08,480 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmpmtnalz88/test.o -laio -o /tmp/tmpmtnalz88/a.out
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1288, in <module>
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 712, in main
+    noisy_model_input,
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+    inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+    if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+RuntimeError: No backend type associated with device type cpu
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1288, in <module>
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 712, in main
+[rank0]:     noisy_model_input,
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1639, in forward
+[rank0]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/parallel/distributed.py", line 1528, in _pre_forward
+[rank0]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank0]: RuntimeError: No backend type associated with device type cpu

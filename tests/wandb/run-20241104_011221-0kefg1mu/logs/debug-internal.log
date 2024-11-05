@@ -1,0 +1,19 @@
+{"time":"2024-11-04T01:12:22.006121534+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-04T01:12:22.006138674+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241104_011221-0kefg1mu/logs/debug-core.log"}
+{"time":"2024-11-04T01:12:22.119956173+09:00","level":"INFO","msg":"created new stream","id":"0kefg1mu"}
+{"time":"2024-11-04T01:12:22.119994983+09:00","level":"INFO","msg":"stream: started","id":"0kefg1mu"}
+{"time":"2024-11-04T01:12:22.120044173+09:00","level":"INFO","msg":"sender: started","stream_id":"0kefg1mu"}
+{"time":"2024-11-04T01:12:22.120026803+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"0kefg1mu"}}
+{"time":"2024-11-04T01:12:22.120063703+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"0kefg1mu"}}
+{"time":"2024-11-04T01:12:22.766452587+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-04T01:12:51.200154661+09:00","level":"INFO","msg":"stream: closing","id":"0kefg1mu"}
+{"time":"2024-11-04T01:12:51.200222841+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-04T01:12:51.200754172+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-04T01:12:51.443787094+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-04T01:12:51.443795704+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-04T01:12:51.443799814+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-04T01:12:52.388170592+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-04T01:12:52.752934636+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"0kefg1mu"}}
+{"time":"2024-11-04T01:12:52.752972586+09:00","level":"INFO","msg":"sender: closed","stream_id":"0kefg1mu"}
+{"time":"2024-11-04T01:12:52.752971406+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"0kefg1mu"}}
+{"time":"2024-11-04T01:12:52.773257436+09:00","level":"INFO","msg":"stream: closed","id":"0kefg1mu"}

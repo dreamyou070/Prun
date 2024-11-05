@@ -1,0 +1,8 @@
+{"time":"2024-11-03T17:05:01.751116966+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-03T17:05:01.751144496+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241103_170501-znytsgfg/logs/debug-core.log"}
+{"time":"2024-11-03T17:05:01.944126119+09:00","level":"INFO","msg":"created new stream","id":"znytsgfg"}
+{"time":"2024-11-03T17:05:01.944167739+09:00","level":"INFO","msg":"stream: started","id":"znytsgfg"}
+{"time":"2024-11-03T17:05:01.944265689+09:00","level":"INFO","msg":"sender: started","stream_id":"znytsgfg"}
+{"time":"2024-11-03T17:05:01.944202239+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"znytsgfg"}}
+{"time":"2024-11-03T17:05:01.944230159+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"znytsgfg"}}
+{"time":"2024-11-03T17:05:02.68074945+09:00","level":"INFO","msg":"Starting system monitor"}

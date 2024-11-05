@@ -1,0 +1,19 @@
+{"time":"2024-11-04T01:08:53.886881112+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-04T01:08:53.886894432+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241104_010853-zo82ewkv/logs/debug-core.log"}
+{"time":"2024-11-04T01:08:53.999103342+09:00","level":"INFO","msg":"created new stream","id":"zo82ewkv"}
+{"time":"2024-11-04T01:08:53.999134282+09:00","level":"INFO","msg":"stream: started","id":"zo82ewkv"}
+{"time":"2024-11-04T01:08:53.999177702+09:00","level":"INFO","msg":"sender: started","stream_id":"zo82ewkv"}
+{"time":"2024-11-04T01:08:53.999157522+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"zo82ewkv"}}
+{"time":"2024-11-04T01:08:53.999163842+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"zo82ewkv"}}
+{"time":"2024-11-04T01:08:55.096443751+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-04T01:09:24.889486104+09:00","level":"INFO","msg":"stream: closing","id":"zo82ewkv"}
+{"time":"2024-11-04T01:09:24.889509964+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-04T01:09:24.889933525+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-04T01:09:25.13303929+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-04T01:09:25.13304973+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-04T01:09:25.13305391+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-04T01:09:26.343708405+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-04T01:09:27.57449268+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"zo82ewkv"}}
+{"time":"2024-11-04T01:09:27.57454918+09:00","level":"INFO","msg":"sender: closed","stream_id":"zo82ewkv"}
+{"time":"2024-11-04T01:09:27.57454374+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"zo82ewkv"}}
+{"time":"2024-11-04T01:09:27.584910365+09:00","level":"INFO","msg":"stream: closed","id":"zo82ewkv"}

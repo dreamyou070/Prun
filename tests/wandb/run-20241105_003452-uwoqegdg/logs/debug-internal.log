@@ -1,0 +1,8 @@
+{"time":"2024-11-05T00:34:52.041542325+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-05T00:34:52.041564565+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241105_003452-uwoqegdg/logs/debug-core.log"}
+{"time":"2024-11-05T00:34:52.157585453+09:00","level":"INFO","msg":"created new stream","id":"uwoqegdg"}
+{"time":"2024-11-05T00:34:52.157651704+09:00","level":"INFO","msg":"stream: started","id":"uwoqegdg"}
+{"time":"2024-11-05T00:34:52.157751414+09:00","level":"INFO","msg":"sender: started","stream_id":"uwoqegdg"}
+{"time":"2024-11-05T00:34:52.157795364+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"uwoqegdg"}}
+{"time":"2024-11-05T00:34:52.157747154+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"uwoqegdg"}}
+{"time":"2024-11-05T00:34:52.893343439+09:00","level":"INFO","msg":"Starting system monitor"}

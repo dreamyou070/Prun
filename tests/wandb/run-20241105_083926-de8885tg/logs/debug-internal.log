@@ -1,0 +1,19 @@
+{"time":"2024-11-05T08:39:27.041400566+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-05T08:39:27.041435736+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241105_083926-de8885tg/logs/debug-core.log"}
+{"time":"2024-11-05T08:39:27.21898707+09:00","level":"INFO","msg":"created new stream","id":"de8885tg"}
+{"time":"2024-11-05T08:39:27.21902314+09:00","level":"INFO","msg":"stream: started","id":"de8885tg"}
+{"time":"2024-11-05T08:39:27.21913678+09:00","level":"INFO","msg":"sender: started","stream_id":"de8885tg"}
+{"time":"2024-11-05T08:39:27.21918255+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"de8885tg"}}
+{"time":"2024-11-05T08:39:27.21913644+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"de8885tg"}}
+{"time":"2024-11-05T08:39:27.734275102+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-05T08:40:08.078489455+09:00","level":"INFO","msg":"stream: closing","id":"de8885tg"}
+{"time":"2024-11-05T08:40:08.078539595+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-05T08:40:08.079349555+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-05T08:40:08.318301262+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-05T08:40:08.318330302+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-05T08:40:08.318335312+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-05T08:40:09.059305095+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-05T08:40:09.470748437+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"de8885tg"}}
+{"time":"2024-11-05T08:40:09.470800827+09:00","level":"INFO","msg":"sender: closed","stream_id":"de8885tg"}
+{"time":"2024-11-05T08:40:09.470788557+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"de8885tg"}}
+{"time":"2024-11-05T08:40:09.515481365+09:00","level":"INFO","msg":"stream: closed","id":"de8885tg"}

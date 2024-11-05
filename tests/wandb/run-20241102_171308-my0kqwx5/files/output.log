@@ -1,0 +1,74 @@
+ present weight dtype = torch.float32
+2024-11-02 17:13:11,140 - __main__ - INFO -
+ step 3. saving dir
+2024-11-02 17:13:11,143 - __main__ - INFO -
+ step 5. preparing pruning
+Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:00, 15.40it/s]/home/dreamyou070/.local/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00,  8.77it/s]
+2024-11-02 17:13:20,956 - __main__ - INFO -
+ step 5. preparing teacher
+Loading pipeline components...: 100%|██████████| 6/6 [00:00<00:00, 14.37it/s]
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+2024-11-02 17:13:31,241 - __main__ - INFO -  (5.1) pruning
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+2024-11-02 17:13:32,075 - __main__ - INFO -
+ step 6. preparing dataset (and loader)
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample_filtered.csv ...
+2024-11-02 17:13:32,083 - __main__ - INFO -
+ step 7. set optimizer
+2024-11-02 17:13:32,084 - __main__ - INFO -
+ step 8. lr scheduler
+2024-11-02 17:13:32,084 - __main__ - INFO -
+ step 9. prepare
+2024-11-02 17:13:32,581 - __main__ - INFO -
+ step 10. saving argument
+2024-11-02 17:13:32,585 - __main__ - INFO -
+ step 11. Train
+2024-11-02 17:13:32,585 - __main__ - INFO - ***** Running training *****
+2024-11-02 17:13:32,585 - __main__ - INFO -   Num Epochs = 10
+2024-11-02 17:13:32,586 - __main__ - INFO -   Instantaneous batch size per device = 1
+2024-11-02 17:13:32,586 - __main__ - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 1
+2024-11-02 17:13:32,586 - __main__ - INFO -   Gradient Accumulation steps = 1
+2024-11-02 17:13:32,586 - __main__ - INFO -   Total optimization steps = 30000
+2024-11-02 17:13:32,586 - __main__ - INFO -   Len train_dataloader = 2553
+Steps:   9%|▊         | 2553/30000 [2:59:31<32:50:23,  4.31s/it]2024-11-02 20:13:09,000 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmpphsomaxj/test.c -o /tmp/tmpphsomaxj/test.o
+[2024-11-02 20:13:06,977] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/dreamyou070/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+2024-11-02 20:13:09,282 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmpphsomaxj/test.o -laio -o /tmp/tmpphsomaxj/a.out
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 495, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 369, in main
+    test_unet = accelerator.unwrap_model(test_unet)
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/accelerate/accelerator.py", line 2633, in unwrap_model
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/accelerate/utils/other.py", line 80, in extract_model_from_parallel
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/__init__.py", line 25, in <module>
+    from . import ops
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/ops/__init__.py", line 15, in <module>
+    from ..git_version_info import compatible_ops as __compatible_ops__
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/git_version_info.py", line 29, in <module>
+    op_compatible = builder.is_compatible()
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/ops/op_builder/fp_quantizer.py", line 35, in is_compatible
+    sys_cuda_major, _ = installed_cuda_version()
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/ops/op_builder/builder.py", line 48, in installed_cuda_version
+    import torch.utils.cpp_extension
+ModuleNotFoundError: No module named 'torch.utils.cpp_extension'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 495, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 369, in main
+[rank0]:     test_unet = accelerator.unwrap_model(test_unet)
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/accelerate/accelerator.py", line 2633, in unwrap_model
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/accelerate/utils/other.py", line 80, in extract_model_from_parallel
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/__init__.py", line 25, in <module>
+[rank0]:     from . import ops
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/ops/__init__.py", line 15, in <module>
+[rank0]:     from ..git_version_info import compatible_ops as __compatible_ops__
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/git_version_info.py", line 29, in <module>
+[rank0]:     op_compatible = builder.is_compatible()
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/ops/op_builder/fp_quantizer.py", line 35, in is_compatible
+[rank0]:     sys_cuda_major, _ = installed_cuda_version()
+[rank0]:   File "/home/dreamyou070/.local/lib/python3.9/site-packages/deepspeed/ops/op_builder/builder.py", line 48, in installed_cuda_version
+[rank0]:     import torch.utils.cpp_extension
+[rank0]: ModuleNotFoundError: No module named 'torch.utils.cpp_extension'

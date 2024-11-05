@@ -1,0 +1,8 @@
+{"time":"2024-11-02T16:09:32.144235857+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-02T16:09:32.144277107+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241102_160931-hp5snb3l/logs/debug-core.log"}
+{"time":"2024-11-02T16:09:32.291040995+09:00","level":"INFO","msg":"created new stream","id":"hp5snb3l"}
+{"time":"2024-11-02T16:09:32.291082445+09:00","level":"INFO","msg":"stream: started","id":"hp5snb3l"}
+{"time":"2024-11-02T16:09:32.291204775+09:00","level":"INFO","msg":"sender: started","stream_id":"hp5snb3l"}
+{"time":"2024-11-02T16:09:32.291115195+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"hp5snb3l"}}
+{"time":"2024-11-02T16:09:32.291137695+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"hp5snb3l"}}
+{"time":"2024-11-02T16:09:32.988313037+09:00","level":"INFO","msg":"Starting system monitor"}

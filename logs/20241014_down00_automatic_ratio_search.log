@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_evolutionary_algorithm_search.py", line 14, in <module>
+    from prun.attn.masactrl_utils import register_motion_editor
+ModuleNotFoundError: No module named 'prun'
+E1031 19:03:04.099407 461055 torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 461215) of binary: /home/dreamyou070/.conda/envs/venv_rglcd/bin/python
+Traceback (most recent call last):
+  File "/home/dreamyou070/.conda/envs/venv_rglcd/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/home/dreamyou070/.conda/envs/venv_rglcd/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/home/dreamyou070/.conda/envs/venv_rglcd/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1159, in launch_command
+    multi_gpu_launcher(args)
+  File "/home/dreamyou070/.conda/envs/venv_rglcd/lib/python3.9/site-packages/accelerate/commands/launch.py", line 793, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dreamyou070/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+animatelcm_evolutionary_algorithm_search.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-10-31_19:03:04
+  host      : node41.localdomain
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 461215)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

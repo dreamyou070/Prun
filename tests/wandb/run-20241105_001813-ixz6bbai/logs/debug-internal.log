@@ -1,0 +1,19 @@
+{"time":"2024-11-05T00:18:13.751187647+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-05T00:18:13.751199997+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241105_001813-ixz6bbai/logs/debug-core.log"}
+{"time":"2024-11-05T00:18:13.894045678+09:00","level":"INFO","msg":"created new stream","id":"ixz6bbai"}
+{"time":"2024-11-05T00:18:13.894117948+09:00","level":"INFO","msg":"stream: started","id":"ixz6bbai"}
+{"time":"2024-11-05T00:18:13.894242968+09:00","level":"INFO","msg":"sender: started","stream_id":"ixz6bbai"}
+{"time":"2024-11-05T00:18:13.894213918+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ixz6bbai"}}
+{"time":"2024-11-05T00:18:13.894494399+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ixz6bbai"}}
+{"time":"2024-11-05T00:18:14.327910633+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-05T00:19:00.351717389+09:00","level":"INFO","msg":"stream: closing","id":"ixz6bbai"}
+{"time":"2024-11-05T00:19:00.351867909+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-05T00:19:00.352961221+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-05T00:19:00.605136816+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-05T00:19:00.605162716+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-05T00:19:00.605172386+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-05T00:19:01.326761388+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-05T00:19:01.674424034+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"ixz6bbai"}}
+{"time":"2024-11-05T00:19:01.674480144+09:00","level":"INFO","msg":"sender: closed","stream_id":"ixz6bbai"}
+{"time":"2024-11-05T00:19:01.674474184+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"ixz6bbai"}}
+{"time":"2024-11-05T00:19:01.675720187+09:00","level":"INFO","msg":"stream: closed","id":"ixz6bbai"}

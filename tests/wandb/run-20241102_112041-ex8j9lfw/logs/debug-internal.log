@@ -1,0 +1,15 @@
+{"time":"2024-11-02T11:20:41.980592301+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-02T11:20:41.980624441+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241102_112041-ex8j9lfw/logs/debug-core.log"}
+{"time":"2024-11-02T11:20:42.253008931+09:00","level":"INFO","msg":"created new stream","id":"ex8j9lfw"}
+{"time":"2024-11-02T11:20:42.253042521+09:00","level":"INFO","msg":"stream: started","id":"ex8j9lfw"}
+{"time":"2024-11-02T11:20:42.25313032+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ex8j9lfw"}}
+{"time":"2024-11-02T11:20:42.25344474+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ex8j9lfw"}}
+{"time":"2024-11-02T11:20:42.25350144+09:00","level":"INFO","msg":"sender: started","stream_id":"ex8j9lfw"}
+{"time":"2024-11-02T11:20:42.578959487+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-02T11:27:47.379757865+09:00","level":"INFO","msg":"stream: closing","id":"ex8j9lfw"}
+{"time":"2024-11-02T11:27:47.379924925+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-02T11:27:47.381186726+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-02T11:27:47.630946726+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-02T11:27:47.630956386+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-02T11:27:47.630960546+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-02T11:27:48.425947184+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}

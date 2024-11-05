@@ -1,0 +1,77 @@
+
+ step 2. noise scheduler and solver
+ (1) teacher pipe
+Loading pipeline components...:  50%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                                                              | 3/6 [00:02<00:02,  1.24it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:03<00:00,  1.99it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:02<00:00,  2.41it/s]
+ (3.2) student model
+ (3.3) sub models
+
+ step 3. optimizer
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+
+ step 4. target unet
+ step 5. weight and device
+ final weight_dtype : torch.float32
+ step 6. move to device
+ step 7. Enable optimizations
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+/home/dreamyou070/Prun/tests/distill.py:397: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler()
+  0%|                                                                                                                                                                                                                                                                    | 0/6 [00:00<?, ?it/s]
+[2024-11-05 00:18:42,499] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/dreamyou070/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Traceback (most recent call last):                                                                                                                                                                                                                                       | 0/6 [00:00<?, ?it/s]
+  File "/home/dreamyou070/Prun/tests/distill.py", line 621, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 541, in main
+    output = eval_pipeline(prompt=prompt,
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/animatediff/pipeline_animatediff.py", line 814, in __call__
+    noise_pred = self.unet(latent_model_input,
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 170, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_motion_model.py", line 1083, in forward
+    sample = self.conv_in(sample)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 549, in _conv_forward
+    return F.conv2d(
+RuntimeError: Input type (c10::Half) and bias type (float) should be the same
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 621, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 541, in main
+[rank0]:     output = eval_pipeline(prompt=prompt,
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+[rank0]:     return func(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/animatediff/pipeline_animatediff.py", line 814, in __call__
+[rank0]:     noise_pred = self.unet(latent_model_input,
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 170, in new_forward
+[rank0]:     output = module._old_forward(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_motion_model.py", line 1083, in forward
+[rank0]:     sample = self.conv_in(sample)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 554, in forward
+[rank0]:     return self._conv_forward(input, self.weight, self.bias)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 549, in _conv_forward
+[rank0]:     return F.conv2d(
+[rank0]: RuntimeError: Input type (c10::Half) and bias type (float) should be the same

@@ -1,0 +1,35 @@
+ present weight dtype = torch.float32
+2024-11-02 16:09:36,846 - __main__ - INFO -
+ step 3. saving dir
+2024-11-02 16:09:36,847 - __main__ - INFO -
+ step 5. preparing pruning
+Loading pipeline components...:  17%|████████████████████████████████████▌                                                                                                                                                                                      | 1/6 [00:00<00:01,  3.44it/s]/home/dreamyou070/.local/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 10.31it/s]
+2024-11-02 16:09:47,498 - __main__ - INFO -
+ step 5. preparing teacher
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.54it/s]
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+2024-11-02 16:09:58,573 - __main__ - INFO -  (5.1) pruning
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+2024-11-02 16:09:59,449 - __main__ - INFO -
+ step 6. preparing dataset (and loader)
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample_filtered.csv ...
+2024-11-02 16:09:59,462 - __main__ - INFO -
+ step 7. set optimizer
+2024-11-02 16:09:59,463 - __main__ - INFO -
+ step 8. lr scheduler
+2024-11-02 16:09:59,463 - __main__ - INFO -
+ step 9. prepare
+2024-11-02 16:09:59,999 - __main__ - INFO -
+ step 10. saving argument
+2024-11-02 16:10:00,004 - __main__ - INFO -
+ step 11. Train
+2024-11-02 16:10:00,004 - __main__ - INFO - ***** Running training *****
+2024-11-02 16:10:00,004 - __main__ - INFO -   Num Epochs = 10
+2024-11-02 16:10:00,004 - __main__ - INFO -   Instantaneous batch size per device = 1
+2024-11-02 16:10:00,004 - __main__ - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 1
+2024-11-02 16:10:00,005 - __main__ - INFO -   Gradient Accumulation steps = 1
+2024-11-02 16:10:00,005 - __main__ - INFO -   Total optimization steps = 30000
+2024-11-02 16:10:00,005 - __main__ - INFO -   Len train_dataloader = 2553
+Steps:   3%|██████                                                                                                                                                                                                                                   | 786/30000 [1:01:10<38:26:01,  4.74s/it]

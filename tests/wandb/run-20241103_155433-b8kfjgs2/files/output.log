@@ -1,0 +1,131 @@
+2024-11-03 15:54:35,733 - __main__ - INFO - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+ step 2. Create the noise scheduler and the desired noise schedule.
+
+{'variance_type'} was not found in config. Values will be initialized to default values.
+ step 3. get model
+ (3.1) teacher model
+{'motion_transformer_layers_per_block', 'motion_transformer_layers_per_mid_block'} was not found in config. Values will be initialized to default values.
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'num_attention_heads', 'attention_type', 'transformer_layers_per_block', 'reverse_transformer_layers_per_block', 'addition_time_embed_dim', 'dropout'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  17%|████████████████████████████████████▌                                                                                                                                                                                      | 1/6 [00:00<00:00,  9.47it/s]Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  33%|█████████████████████████████████████████████████████████████████████████                                                                                                                                                  | 2/6 [00:00<00:00,  4.84it/s]{'force_upcast', 'shift_factor', 'use_quant_conv', 'latents_std', 'latents_mean', 'use_post_quant_conv'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.94it/s]
+{'transformer_layers_per_mid_block', 'mid_block_layers', 'reverse_temporal_transformer_layers_per_block', 'reverse_motion_num_attention_heads'} was not found in config. Values will be initialized to default values.
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (3.2) sub models
+ (3.3) create online unet
+{'motion_transformer_layers_per_block', 'motion_transformer_layers_per_mid_block'} was not found in config. Values will be initialized to default values.
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'num_attention_heads', 'attention_type', 'transformer_layers_per_block', 'reverse_transformer_layers_per_block', 'addition_time_embed_dim', 'dropout'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  33%|█████████████████████████████████████████████████████████████████████████                                                                                                                                                  | 2/6 [00:00<00:00,  5.80it/s]{'force_upcast', 'shift_factor', 'use_quant_conv', 'latents_std', 'latents_mean', 'use_post_quant_conv'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 14.19it/s]
+{'transformer_layers_per_mid_block', 'mid_block_layers', 'reverse_temporal_transformer_layers_per_block', 'reverse_motion_num_attention_heads'} was not found in config. Values will be initialized to default values.
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (2.3) target student U-Net
+ step 3. weight and device
+2024-11-03 15:54:56,929 - __main__ - INFO -
+ step 6. preparing dataset (and loader)
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+2024-11-03 15:54:57,362 - __main__ - INFO - ***** Running training *****
+2024-11-03 15:54:57,363 - __main__ - INFO -   Num Epochs = 30000
+2024-11-03 15:54:57,363 - __main__ - INFO -   Instantaneous batch size per device = 1
+2024-11-03 15:54:57,363 - __main__ - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 1
+2024-11-03 15:54:57,363 - __main__ - INFO -   Gradient Accumulation steps = 1
+2024-11-03 15:54:57,363 - __main__ - INFO -   Total optimization steps = 30000
+Steps:   2%|███▉                                                                                                                                                                                                                                       | 500/30000 [29:22<29:39:45,  3.62s/it]2024-11-03 16:24:19,687 - accelerate.accelerator - INFO - Saving current state to /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500
+Configuration saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/unet_target/config.json
+Model weights saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/unet_target/diffusion_pytorch_model.safetensors
+Configuration saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/unet/config.json
+Model weights saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/unet/diffusion_pytorch_model.safetensors
+2024-11-03 16:24:33,714 - accelerate.checkpointing - INFO - Optimizer state saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/optimizer.bin
+2024-11-03 16:24:33,718 - accelerate.checkpointing - INFO - Scheduler state saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/scheduler.bin
+2024-11-03 16:24:33,726 - accelerate.checkpointing - INFO - Gradient scaler state saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/scaler.pt
+2024-11-03 16:24:33,732 - accelerate.checkpointing - INFO - Random states saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500/random_states_0.pkl
+2024-11-03 16:24:33,732 - __main__ - INFO - Saved state to /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-500
+Steps:   3%|███████▋                                                                                                                                                                                                                                | 1000/30000 [1:00:21<28:47:02,  3.57s/it]2024-11-03 16:55:18,635 - accelerate.accelerator - INFO - Saving current state to /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000
+Configuration saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/unet_target/config.json
+Model weights saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/unet_target/diffusion_pytorch_model.safetensors
+Configuration saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/unet/config.json
+Model weights saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/unet/diffusion_pytorch_model.safetensors
+2024-11-03 16:55:33,787 - accelerate.checkpointing - INFO - Optimizer state saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/optimizer.bin
+2024-11-03 16:55:33,792 - accelerate.checkpointing - INFO - Scheduler state saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/scheduler.bin
+2024-11-03 16:55:33,805 - accelerate.checkpointing - INFO - Gradient scaler state saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/scaler.pt
+2024-11-03 16:55:33,814 - accelerate.checkpointing - INFO - Random states saved in /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000/random_states_0.pkl
+2024-11-03 16:55:33,814 - __main__ - INFO - Saved state to /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching/pruned_model/checkpoint-1000
+Steps:   4%|████████▌                                                                                                                                                                                                                               | 1108/30000 [1:07:34<31:03:32,  3.87s/it]Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1331, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 716, in main
+    latents = vae.encode(pixel_value).latent_dist.sample()  # here problem ...
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/utils/accelerate_utils.py", line 45, in wrapper
+    self._hf_hook.pre_forward(self)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 700, in pre_forward
+    self.prev_module_hook.offload()
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 717, in offload
+    self.hook.init_hook(self.model)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 696, in init_hook
+    return module.to("cpu")
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1340, in to
+    return self._apply(convert)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in _apply
+    param_applied = fn(param)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1326, in convert
+    return t.to(
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1331, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 716, in main
+[rank0]:     latents = vae.encode(pixel_value).latent_dist.sample()  # here problem ...
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/utils/accelerate_utils.py", line 45, in wrapper
+[rank0]:     self._hf_hook.pre_forward(self)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 700, in pre_forward
+[rank0]:     self.prev_module_hook.offload()
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 717, in offload
+[rank0]:     self.hook.init_hook(self.model)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 696, in init_hook
+[rank0]:     return module.to("cpu")
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1340, in to
+[rank0]:     return self._apply(convert)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   [Previous line repeated 3 more times]
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in _apply
+[rank0]:     param_applied = fn(param)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1326, in convert
+[rank0]:     return t.to(
+[rank0]: KeyboardInterrupt

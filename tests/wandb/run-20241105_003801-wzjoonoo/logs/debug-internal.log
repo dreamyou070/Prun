@@ -1,0 +1,19 @@
+{"time":"2024-11-05T00:38:01.507850144+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-05T00:38:01.507866444+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241105_003801-wzjoonoo/logs/debug-core.log"}
+{"time":"2024-11-05T00:38:01.654340263+09:00","level":"INFO","msg":"created new stream","id":"wzjoonoo"}
+{"time":"2024-11-05T00:38:01.654399343+09:00","level":"INFO","msg":"stream: started","id":"wzjoonoo"}
+{"time":"2024-11-05T00:38:01.654424183+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"wzjoonoo"}}
+{"time":"2024-11-05T00:38:01.654496643+09:00","level":"INFO","msg":"sender: started","stream_id":"wzjoonoo"}
+{"time":"2024-11-05T00:38:01.654518783+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"wzjoonoo"}}
+{"time":"2024-11-05T00:38:02.404361471+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-05T00:39:45.630653458+09:00","level":"INFO","msg":"stream: closing","id":"wzjoonoo"}
+{"time":"2024-11-05T00:39:45.630790779+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-05T00:39:45.634042836+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-05T00:39:45.907927361+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-05T00:39:45.907941531+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-05T00:39:45.907947041+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-05T00:39:46.953688755+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-05T00:39:47.389672835+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"wzjoonoo"}}
+{"time":"2024-11-05T00:39:47.389731745+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"wzjoonoo"}}
+{"time":"2024-11-05T00:39:47.389751755+09:00","level":"INFO","msg":"sender: closed","stream_id":"wzjoonoo"}
+{"time":"2024-11-05T00:39:47.398180614+09:00","level":"INFO","msg":"stream: closed","id":"wzjoonoo"}

@@ -1,0 +1,19 @@
+{"time":"2024-11-04T01:00:10.786533959+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-04T01:00:10.786549529+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241104_010010-6zyr1tcb/logs/debug-core.log"}
+{"time":"2024-11-04T01:00:10.902360654+09:00","level":"INFO","msg":"created new stream","id":"6zyr1tcb"}
+{"time":"2024-11-04T01:00:10.902393624+09:00","level":"INFO","msg":"stream: started","id":"6zyr1tcb"}
+{"time":"2024-11-04T01:00:10.902489384+09:00","level":"INFO","msg":"sender: started","stream_id":"6zyr1tcb"}
+{"time":"2024-11-04T01:00:10.902419124+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"6zyr1tcb"}}
+{"time":"2024-11-04T01:00:10.902472694+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"6zyr1tcb"}}
+{"time":"2024-11-04T01:00:11.613244507+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-04T01:00:39.950410293+09:00","level":"INFO","msg":"stream: closing","id":"6zyr1tcb"}
+{"time":"2024-11-04T01:00:39.950456123+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-04T01:00:39.951019584+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-04T01:00:40.201253243+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-04T01:00:40.201267923+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-04T01:00:40.201272053+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-04T01:00:40.804048955+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-04T01:00:41.159001814+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"6zyr1tcb"}}
+{"time":"2024-11-04T01:00:41.159029704+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"6zyr1tcb"}}
+{"time":"2024-11-04T01:00:41.159045684+09:00","level":"INFO","msg":"sender: closed","stream_id":"6zyr1tcb"}
+{"time":"2024-11-04T01:00:41.201863236+09:00","level":"INFO","msg":"stream: closed","id":"6zyr1tcb"}

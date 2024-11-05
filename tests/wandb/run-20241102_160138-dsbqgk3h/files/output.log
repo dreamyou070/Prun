@@ -1,0 +1,25 @@
+ present weight dtype = torch.float32
+2024-11-02 16:01:41,448 - __main__ - INFO -
+ step 3. saving dir
+2024-11-02 16:01:41,449 - __main__ - INFO -
+ step 5. preparing pruning
+Loading pipeline components...:  17%|████████████████████████████████████▌                                                                                                                                                                                      | 1/6 [00:00<00:00,  8.27it/s]/home/dreamyou070/.local/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00,  9.17it/s]
+2024-11-02 16:01:51,601 - __main__ - INFO -
+ step 5. preparing teacher
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.20it/s]
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+2024-11-02 16:02:02,352 - __main__ - INFO -  (5.1) pruning
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 495, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 181, in main
+    test_pipe.to(acclelerator.device)
+NameError: name 'acclelerator' is not defined
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 495, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune.py", line 181, in main
+[rank0]:     test_pipe.to(acclelerator.device)
+[rank0]: NameError: name 'acclelerator' is not defined

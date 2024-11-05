@@ -1,0 +1,69 @@
+2024-11-03 17:30:43,328 - __main__ - INFO - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+ step 2. Create the noise scheduler and the desired noise schedule.
+
+{'variance_type'} was not found in config. Values will be initialized to default values.
+ step 3. get model
+ (3.1) teacher model
+{'motion_transformer_layers_per_mid_block', 'motion_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'attention_type', 'reverse_transformer_layers_per_block', 'num_attention_heads', 'addition_time_embed_dim', 'dropout', 'transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  17%|████████████████████████████████████▌                                                                                                                                                                                      | 1/6 [00:00<00:00,  9.91it/s]{'use_post_quant_conv', 'shift_factor', 'use_quant_conv', 'latents_mean', 'latents_std', 'force_upcast'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  50%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                                             | 3/6 [00:00<00:00,  7.28it/s]Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.73it/s]
+{'reverse_motion_num_attention_heads', 'reverse_temporal_transformer_layers_per_block', 'transformer_layers_per_mid_block', 'mid_block_layers'} was not found in config. Values will be initialized to default values.
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (3.2) sub models
+ (3.3) create online unet
+{'motion_transformer_layers_per_mid_block', 'motion_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'attention_type', 'reverse_transformer_layers_per_block', 'num_attention_heads', 'addition_time_embed_dim', 'dropout', 'transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+{'use_post_quant_conv', 'shift_factor', 'use_quant_conv', 'latents_mean', 'latents_std', 'force_upcast'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  33%|█████████████████████████████████████████████████████████████████████████                                                                                                                                                  | 2/6 [00:00<00:00, 15.25it/s]Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  67%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                         | 4/6 [00:00<00:00,  8.89it/s]Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.93it/s]
+{'reverse_motion_num_attention_heads', 'reverse_temporal_transformer_layers_per_block', 'transformer_layers_per_mid_block', 'mid_block_layers'} was not found in config. Values will be initialized to default values.
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (2.3) target student U-Net
+ step 3. weight and device
+2024-11-03 17:31:06,890 - __main__ - INFO -
+ step 6. preparing dataset (and loader)
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+2024-11-03 17:31:07,333 - __main__ - INFO - ***** Running training *****
+2024-11-03 17:31:07,333 - __main__ - INFO -   Num Epochs = 30000
+2024-11-03 17:31:07,333 - __main__ - INFO -   Instantaneous batch size per device = 1
+2024-11-03 17:31:07,333 - __main__ - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 1
+2024-11-03 17:31:07,333 - __main__ - INFO -   Gradient Accumulation steps = 1
+2024-11-03 17:31:07,333 - __main__ - INFO -   Total optimization steps = 30000
+Steps:   0%|                                                                                                                                                                                                                                             | 1/30000 [00:06<51:02:53,  6.13s/it]Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1282, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 886, in main
+    unet_to_save = accelerator.unwrap_model(unet).to('cpu')  # CPU로 이동
+UnboundLocalError: local variable 'unet' referenced before assignment
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1282, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 886, in main
+[rank0]:     unet_to_save = accelerator.unwrap_model(unet).to('cpu')  # CPU로 이동
+[rank0]: UnboundLocalError: local variable 'unet' referenced before assignment

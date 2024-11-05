@@ -1,0 +1,19 @@
+{"time":"2024-11-05T01:04:56.623453402+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-05T01:04:56.623520943+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241105_010456-s6tyll31/logs/debug-core.log"}
+{"time":"2024-11-05T01:04:56.739732052+09:00","level":"INFO","msg":"created new stream","id":"s6tyll31"}
+{"time":"2024-11-05T01:04:56.739813422+09:00","level":"INFO","msg":"stream: started","id":"s6tyll31"}
+{"time":"2024-11-05T01:04:56.739943692+09:00","level":"INFO","msg":"sender: started","stream_id":"s6tyll31"}
+{"time":"2024-11-05T01:04:56.739912972+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"s6tyll31"}}
+{"time":"2024-11-05T01:04:56.739994083+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"s6tyll31"}}
+{"time":"2024-11-05T01:04:57.205983532+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-05T01:05:31.741548035+09:00","level":"INFO","msg":"stream: closing","id":"s6tyll31"}
+{"time":"2024-11-05T01:05:31.741635665+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-05T01:05:31.742705478+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-05T01:05:31.98113693+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-05T01:05:31.98115929+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-05T01:05:31.98116503+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-05T01:05:32.576928501+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-05T01:05:33.009034912+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"s6tyll31"}}
+{"time":"2024-11-05T01:05:33.009119063+09:00","level":"INFO","msg":"sender: closed","stream_id":"s6tyll31"}
+{"time":"2024-11-05T01:05:33.009093092+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"s6tyll31"}}
+{"time":"2024-11-05T01:05:33.097224527+09:00","level":"INFO","msg":"stream: closed","id":"s6tyll31"}

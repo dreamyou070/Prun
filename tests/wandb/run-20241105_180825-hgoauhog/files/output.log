@@ -1,0 +1,78 @@
+ step 3. weight and device
+ final weight_dtype : torch.float32
+
+ step 4. noise scheduler and solver
+ (1) teacher pipe
+Loading pipeline components...:  33%|██████████████████████████████████████████████████████████████████████▋                                                                                                                                             | 2/6 [00:00<00:00, 18.39it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:02<00:00,  2.62it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  5.79it/s]
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3.3) sub models
+
+ step 3. optimizer
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/distill.py", line 652, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 302, in main
+    student_pipe.to(accelerator.device)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/pipeline_utils.py", line 431, in to
+    module.to(device, dtype)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1340, in to
+    return self._apply(convert)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  [Previous line repeated 6 more times]
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in _apply
+    param_applied = fn(param)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1326, in convert
+    return t.to(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 1.95 GiB of which 9.94 MiB is free. Process 2365784 has 1.12 GiB memory in use. Including non-PyTorch memory, this process has 834.00 MiB memory in use. Of the allocated memory 792.79 MiB is allocated by PyTorch, and 9.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 652, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 302, in main
+[rank0]:     student_pipe.to(accelerator.device)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/pipeline_utils.py", line 431, in to
+[rank0]:     module.to(device, dtype)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1340, in to
+[rank0]:     return self._apply(convert)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   [Previous line repeated 6 more times]
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in _apply
+[rank0]:     param_applied = fn(param)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1326, in convert
+[rank0]:     return t.to(
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 1.95 GiB of which 9.94 MiB is free. Process 2365784 has 1.12 GiB memory in use. Including non-PyTorch memory, this process has 834.00 MiB memory in use. Of the allocated memory 792.79 MiB is allocated by PyTorch, and 9.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

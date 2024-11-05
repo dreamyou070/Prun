@@ -1,0 +1,19 @@
+{"time":"2024-11-04T18:57:11.769623612+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-04T18:57:11.769638912+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241104_185711-e85zg0cg/logs/debug-core.log"}
+{"time":"2024-11-04T18:57:11.896879933+09:00","level":"INFO","msg":"created new stream","id":"e85zg0cg"}
+{"time":"2024-11-04T18:57:11.896914553+09:00","level":"INFO","msg":"stream: started","id":"e85zg0cg"}
+{"time":"2024-11-04T18:57:11.896995843+09:00","level":"INFO","msg":"sender: started","stream_id":"e85zg0cg"}
+{"time":"2024-11-04T18:57:11.896934513+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"e85zg0cg"}}
+{"time":"2024-11-04T18:57:11.897020043+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"e85zg0cg"}}
+{"time":"2024-11-04T18:57:12.319203514+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-04T18:57:41.540922895+09:00","level":"INFO","msg":"stream: closing","id":"e85zg0cg"}
+{"time":"2024-11-04T18:57:41.540991245+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-04T18:57:41.541611295+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-04T18:57:41.783802206+09:00","level":"WARN","msg":"No job ingredients found, not creating job artifact"}
+{"time":"2024-11-04T18:57:41.783815736+09:00","level":"WARN","msg":"No source type found, not creating job artifact"}
+{"time":"2024-11-04T18:57:41.783820696+09:00","level":"INFO","msg":"sender: sendDefer: no job artifact to save"}
+{"time":"2024-11-04T18:57:42.34897851+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-04T18:57:42.695035638+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"e85zg0cg"}}
+{"time":"2024-11-04T18:57:42.695111838+09:00","level":"INFO","msg":"sender: closed","stream_id":"e85zg0cg"}
+{"time":"2024-11-04T18:57:42.695094838+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"e85zg0cg"}}
+{"time":"2024-11-04T18:57:42.770257901+09:00","level":"INFO","msg":"stream: closed","id":"e85zg0cg"}

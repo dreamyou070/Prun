@@ -1,0 +1,54 @@
+
+ step 2. noise scheduler and solver
+ (1) teacher pipe
+Loading pipeline components...:  33%|█████████████████████████████████████████████████████████████████████████▎                                                                                                                                                  | 2/6 [00:00<00:01,  2.99it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:02<00:00,  2.05it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:02<00:00,  2.29it/s]
+skip_layers : ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+checking skip_layers = ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+final_name = down_blocks_0_motion_modules_0
+checking skip_layers = ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+final_name = down_blocks_0_motion_modules_1
+checking skip_layers = ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+final_name = down_blocks_1_motion_modules_0
+checking skip_layers = ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+final_name = down_blocks_1_motion_modules_1
+checking skip_layers = ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+final_name = down_blocks_2_motion_modules_0
+checking skip_layers = ['down_blocks_2_motion_modules_1', 'down_blocks_3_motion_modules_1', 'mid_block_motion_modules_0', 'up_blocks_0_motion_modules_0', 'up_blocks_0_motion_modules_1', 'up_blocks_0_motion_modules_2', 'up_blocks_1_motion_modules_0', 'up_blocks_1_motion_modules_1', 'up_blocks_2_motion_modules_2', 'up_blocks_3_motion_modules_0', 'up_blocks_3_motion_modules_1']
+final_name = down_blocks_2_motion_modules_1
+setting simple attention
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/distill.py", line 666, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 272, in main
+    set_simple_attention(student_unet, skip_layers)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 163, in set_simple_attention
+    register_editor(net_name,net)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 160, in register_editor
+    register_editor(final_name, subnet)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 160, in register_editor
+    register_editor(final_name, subnet)
+  File "/home/dreamyou070/Prun/tests/distill.py", line 139, in register_editor
+    for name, subnet in net.named_children():
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 2746, in named_children
+    for name, module in self._modules.items():
+RuntimeError: dictionary changed size during iteration
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 666, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 272, in main
+[rank0]:     set_simple_attention(student_unet, skip_layers)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 163, in set_simple_attention
+[rank0]:     register_editor(net_name,net)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 160, in register_editor
+[rank0]:     register_editor(final_name, subnet)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 160, in register_editor
+[rank0]:     register_editor(final_name, subnet)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill.py", line 139, in register_editor
+[rank0]:     for name, subnet in net.named_children():
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 2746, in named_children
+[rank0]:     for name, module in self._modules.items():
+[rank0]: RuntimeError: dictionary changed size during iteration

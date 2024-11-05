@@ -1,0 +1,92 @@
+2024-11-03 17:34:34,750 - __main__ - INFO - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 1
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+ step 2. Create the noise scheduler and the desired noise schedule.
+
+{'variance_type'} was not found in config. Values will be initialized to default values.
+ step 3. get model
+ (3.1) teacher model
+ teacher adapter calling
+{'motion_transformer_layers_per_mid_block', 'motion_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+ teacher base pipe calling
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'dropout', 'attention_type', 'num_attention_heads', 'transformer_layers_per_block', 'addition_time_embed_dim', 'reverse_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  17%|████████████████████████████████████▌                                                                                                                                                                                      | 1/6 [00:00<00:00,  9.48it/s]Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+{'shift_factor', 'use_post_quant_conv', 'latents_std', 'use_quant_conv', 'force_upcast', 'latents_mean'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                    | 5/6 [00:00<00:00, 10.90it/s]Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 12.90it/s]
+{'mid_block_layers', 'reverse_motion_num_attention_heads', 'transformer_layers_per_mid_block', 'reverse_temporal_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+ teacher lora loading
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (3.2) sub models
+ (3.3) create online unet
+{'motion_transformer_layers_per_mid_block', 'motion_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+{'motion_adapter', 'image_encoder'} was not found in config. Values will be initialized to default values.
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]{'dropout', 'attention_type', 'num_attention_heads', 'transformer_layers_per_block', 'addition_time_embed_dim', 'reverse_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+Loaded unet as UNet2DConditionModel from `unet` subfolder of emilianJR/epiCRealism.
+Loaded tokenizer as CLIPTokenizer from `tokenizer` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  33%|█████████████████████████████████████████████████████████████████████████                                                                                                                                                  | 2/6 [00:00<00:00,  8.36it/s]{'shift_factor', 'use_post_quant_conv', 'latents_std', 'use_quant_conv', 'force_upcast', 'latents_mean'} was not found in config. Values will be initialized to default values.
+Loaded vae as AutoencoderKL from `vae` subfolder of emilianJR/epiCRealism.
+Loaded feature_extractor as CLIPFeatureExtractor from `feature_extractor` subfolder of emilianJR/epiCRealism.
+Loaded text_encoder as CLIPTextModel from `text_encoder` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                    | 5/6 [00:00<00:00,  8.67it/s]Loaded scheduler as PNDMScheduler from `scheduler` subfolder of emilianJR/epiCRealism.
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:00<00:00, 10.25it/s]
+{'mid_block_layers', 'reverse_motion_num_attention_heads', 'transformer_layers_per_mid_block', 'reverse_temporal_transformer_layers_per_block'} was not found in config. Values will be initialized to default values.
+Non-diffusers checkpoint detected.
+Loading unet.
+It seems like you have activated model offloading by calling `enable_model_cpu_offload`, but are now manually moving the pipeline to GPU. It is strongly recommended against doing so as memory gains from offloading are likely to be lost. Offloading automatically takes care of moving the individual components vae, text_encoder, tokenizer, unet, motion_adapter, scheduler, feature_extractor, image_encoder to GPU when needed. To make sure offloading works as expected, you should consider moving the pipeline back to CPU: `pipeline.to('cpu')` or removing the move altogether if you use offloading.
+ (2.3) target student U-Net
+ step 3. weight and device
+2024-11-03 17:34:59,652 - __main__ - INFO -
+ step 6. preparing dataset (and loader)
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+2024-11-03 17:35:00,064 - __main__ - INFO - ***** Running training *****
+2024-11-03 17:35:00,064 - __main__ - INFO -   Num Epochs = 30000
+2024-11-03 17:35:00,064 - __main__ - INFO -   Instantaneous batch size per device = 1
+2024-11-03 17:35:00,064 - __main__ - INFO -   Total train batch size (w. parallel, distributed & accumulation) = 1
+2024-11-03 17:35:00,064 - __main__ - INFO -   Gradient Accumulation steps = 1
+2024-11-03 17:35:00,065 - __main__ - INFO -   Total optimization steps = 30000
+Steps:   0%|                                                                                                                                                                                                                                             | 1/30000 [00:06<51:23:55,  6.17s/it]2024-11-03 17:35:07,721 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmp24nonqun/test.c -o /tmp/tmp24nonqun/test.o
+[2024-11-03 17:35:06,877] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/dreamyou070/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+2024-11-03 17:35:07,946 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmp24nonqun/test.o -laio -o /tmp/tmp24nonqun/a.out
+2024-11-03 17:35:08,900 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmprei6idy4/test.c -o /tmp/tmprei6idy4/test.o
+2024-11-03 17:35:09,113 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmprei6idy4/test.o -L/opt/ohpc/pub/apps/cuda/12.5 -L/opt/ohpc/pub/apps/cuda/12.5/lib64 -lcufile -o /tmp/tmprei6idy4/a.out
+2024-11-03 17:35:09,354 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -O2 -isystem /home/dreamyou070/.conda/envs/venv_prun3/include -fPIC -c /tmp/tmp228vsg1h/test.c -o /tmp/tmp228vsg1h/test.o
+2024-11-03 17:35:09,566 - root - INFO - gcc -pthread -B /home/dreamyou070/.conda/envs/venv_prun3/compiler_compat /tmp/tmp228vsg1h/test.o -laio -o /tmp/tmp228vsg1h/a.out
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1286, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 891, in main
+    torch.save(unet_to_save.state_dict(), os.path.join(unet_path, f"checkpoint-{global_step}.pth"))
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/serialization.py", line 849, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/serialization.py", line 716, in _open_zipfile_writer
+    return container(name_or_buffer)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/serialization.py", line 687, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+RuntimeError: Parent directory /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching_step_by_step_test/pruned_model/unet does not exist.
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 1286, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/animatelcm_finetune_block_substitute.py", line 891, in main
+[rank0]:     torch.save(unet_to_save.state_dict(), os.path.join(unet_path, f"checkpoint-{global_step}.pth"))
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/serialization.py", line 849, in save
+[rank0]:     with _open_zipfile_writer(f) as opened_zipfile:
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/serialization.py", line 716, in _open_zipfile_writer
+[rank0]:     return container(name_or_buffer)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/serialization.py", line 687, in __init__
+[rank0]:     super().__init__(torch._C.PyTorchFileWriter(self.name))
+[rank0]: RuntimeError: Parent directory /scratch2/dreamyou070/Prun/result/4_animatelcm_finetune_prun_10_panda_data_LCM_loss_Feture_Matching_step_by_step_test/pruned_model/unet does not exist.
