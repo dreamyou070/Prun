@@ -24,7 +24,7 @@ def subject_consistency(model, video_list, device, read_frame):
         image_transform = dino_transform_Image(224)
     else:
         image_transform = dino_transform(224)
-    for video_path in tqdm(video_list, disable=get_rank() > 0):
+    for video_path in video_list:
         video_sim = 0.0
         print(f' [subject consistency file] {video_path}')
         if read_frame:

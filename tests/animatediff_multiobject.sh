@@ -26,6 +26,7 @@ accelerate launch \
  --target_block_num ${target_block_num} \
  --pretrained_model_path "emilianJR/epiCRealism" \
  --init_architecture "[0,1,2,3,4,13,14,16,17,18]" \
+ --prompt_file_dir '/home/dreamyou070/Prun/src/prun/configs/prompts.txt' \
  --population_size 6 --mutation_num 2 --max_prompt 1
 
 

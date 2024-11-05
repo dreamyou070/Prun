@@ -11,6 +11,7 @@ from prun.score_fn.motion_smoothness import compute_motion_smoothness
 from prun.score_fn.subject_consistency import compute_subject_consistency
 from accelerate import Accelerator
 from diffusers import AnimateDiffPipeline, LCMScheduler, MotionAdapter
+from diffusers.utils import export_to_gif, export_to_video
 
 class MultiObjectiveGeneticAlgorithm:
     def __init__(self, population_size=50, generations=100, mutation_rate=0.1, total_block_num=21,
@@ -62,7 +63,7 @@ class MultiObjectiveGeneticAlgorithm:
         population = []
         for _ in range(self.population_size):
             # 임의로 10 개 블록을 샘플링 하고 sort 해서 아키텍처 생성
-            architecture = sorted(random.sample(range(self.num_blocks), k=self.target_block_num))
+            architecture = sorted(random.sample(range(self.total_block_num), k=self.target_block_num))
             population.append(architecture)  # 생성된 아키텍처를 개체군에 추가
         return population
     def model_inference_and_save(self, architecture, folder):
@@ -99,9 +100,9 @@ class MultiObjectiveGeneticAlgorithm:
                 p = prompt.strip()
                 export_to_video(frames, os.path.join(folder, f'{save_prompt}.mp4'))
         # [3] recover
-        self.test_unet.load_state_dict(self.original_state_dict)
-        self.test_unet.to('cuda')
-        self.test_pipe.unet = self.test_unet
+        self.unet.load_state_dict(self.original_state_dict)
+        self.unet.to('cuda')
+        self.test_pipe.unet = self.unet
         self.test_pipe.to('cuda')
         self.device = 'cuda'
 
@@ -133,6 +134,8 @@ class MultiObjectiveGeneticAlgorithm:
             for i in architecture:  # using ?
                 folder_name += f'{i}-'
             architecture_folder = os.path.join(self.base_folder, f'pruned_using_{folder_name}architecture')
+
+        os.makedirs(architecture_folder, exist_ok=True)
         self.model_inference_and_save(architecture, folder = architecture_folder)
         dynamic_mean = self.evaluate_motion_dynamics(architecture_folder)  # 모션 부드러움 점수 생성
         motion_smooth_mean = self.evaluate_motion_smoothness(architecture_folder)
@@ -261,5 +264,7 @@ if __name__ == "__main__":
                         default=[0, 1, 2, 3, 4, 13, 14, 15, 16, 17, 18])
     parser.add_argument("--max_prompt", type=int, default=10)
     parser.add_argument("--pretrained_model_path", type=str, default='prompt.txt')
+    # inference
+    parser.add_argument("--prompt_file_dir", type=str, default='prompt.txt')
     args = parser.parse_args()
     main(args)
