@@ -55,8 +55,9 @@ def main(args):
     for folder in folders :
         if 'not_mp4' not in folder :
     """
+
     my_VBench.evaluate(videos_path = args.videos_path, #os.path.join(args.videos_path, folder),
-                       name = f'{folder}_{args.dimension[0]}',
+                       name = f'{args.dimension[0]}',
                        prompt_list=prompt, # pass in [] to read prompt from filename
                        dimension_list = args.dimension,
                        local=args.load_ckpt_from_local,
