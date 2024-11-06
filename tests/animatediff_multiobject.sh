@@ -4,7 +4,7 @@
 #SBATCH --output=/home/dreamyou070/Prun/logs/block_10.log
 #SBATCH --error=/home/dreamyou070/Prun/logs/block_10.log
 #SBATCH --time=48:00:00
-port_number=51510
+port_number=51511
 # 11 / [0,1,2,3,4,13,14,15,16,17,18]
 # 10 / [0,1,2,3,4,13,14,16,17,18]
 # 9 / [0,1,2,3,4,13,14,17,18]
@@ -25,9 +25,10 @@ accelerate launch \
  --seed 0 \
  --target_block_num ${target_block_num} \
  --pretrained_model_path "emilianJR/epiCRealism" \
- --init_architecture "[0,1,2,3,4,13,14,16,17,18]" \
  --prompt_file_dir '/home/dreamyou070/Prun/src/prun/configs/prompts.txt' \
- --population_size 6 --mutation_num 2 --max_prompt 1
+ --population_size 2 \
+ --mutation_num 2 \
+ --max_prompt 2
 
 
 # sbatch -p suma_a6000 -q big_qos --gres=gpu:1 --time 48:00:00 animatelcm_evolutionary_algorithm_search.sh
