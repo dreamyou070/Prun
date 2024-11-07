@@ -1,0 +1,118 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...:  67%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                         | 4/6 [00:01<00:00,  2.30it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.63it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.55it/s]
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3) sub models
+
+ step 4. optimizer
+ step 5. make dataloader
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+ step 7. accelerator prepare
+ ***** student_unet gradient checkpointing *****
+ step 8. train
+epoch = 0, step = 0
+ total_loss = 0.02118963561952114 device = cuda:0
+epoch = 0, step = 1
+ total_loss = 0.018391374498605728 device = cuda:0
+epoch = 0, step = 2
+ total_loss = 0.04295283928513527 device = cuda:0
+epoch = 0, step = 3
+ total_loss = 0.02291952073574066 device = cuda:0
+epoch = 0, step = 4
+ total_loss = 0.02448907680809498 device = cuda:0
+epoch = 0, step = 5
+ total_loss = 0.07009530812501907 device = cuda:0
+epoch = 0, step = 6
+ total_loss = 0.016265176236629486 device = cuda:0
+epoch = 0, step = 7
+ total_loss = 0.0023984434083104134 device = cuda:0
+epoch = 0, step = 8
+ total_loss = 0.0012297392822802067 device = cuda:0
+epoch = 0, step = 9
+ total_loss = 0.02416648343205452 device = cuda:0
+epoch = 0, step = 10
+ total_loss = 0.005685853306204081 device = cuda:0
+epoch = 0, step = 11
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/simple_train.py", line 454, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/simple_train.py", line 343, in main
+    inputs_teacher = []
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 165, in new_forward
+    args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 702, in pre_forward
+    module.to(self.execution_device)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1340, in to
+    return self._apply(convert)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+    module._apply(fn)
+  [Previous line repeated 8 more times]
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in _apply
+    param_applied = fn(param)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1326, in convert
+    return t.to(
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/simple_train.py", line 454, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/simple_train.py", line 343, in main
+[rank0]:     inputs_teacher = []
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 165, in new_forward
+[rank0]:     args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/hooks.py", line 702, in pre_forward
+[rank0]:     module.to(self.execution_device)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1340, in to
+[rank0]:     return self._apply(convert)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 900, in _apply
+[rank0]:     module._apply(fn)
+[rank0]:   [Previous line repeated 8 more times]
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in _apply
+[rank0]:     param_applied = fn(param)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1326, in convert
+[rank0]:     return t.to(
+[rank0]: KeyboardInterrupt

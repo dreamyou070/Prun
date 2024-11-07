@@ -1,0 +1,8 @@
+{"time":"2024-11-07T15:28:17.708143619+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T15:28:17.708157879+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_152817-wtxv1l2c/logs/debug-core.log"}
+{"time":"2024-11-07T15:28:17.867708734+09:00","level":"INFO","msg":"created new stream","id":"wtxv1l2c"}
+{"time":"2024-11-07T15:28:17.867738114+09:00","level":"INFO","msg":"stream: started","id":"wtxv1l2c"}
+{"time":"2024-11-07T15:28:17.867833934+09:00","level":"INFO","msg":"sender: started","stream_id":"wtxv1l2c"}
+{"time":"2024-11-07T15:28:17.867767824+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"wtxv1l2c"}}
+{"time":"2024-11-07T15:28:17.867825134+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"wtxv1l2c"}}
+{"time":"2024-11-07T15:28:18.274606529+09:00","level":"INFO","msg":"Starting system monitor"}

@@ -1,0 +1,11 @@
+{"time":"2024-11-07T09:42:45.424776724+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T09:42:45.424793854+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_094245-z20j6crg/logs/debug-core.log"}
+{"time":"2024-11-07T09:42:45.683831391+09:00","level":"INFO","msg":"created new stream","id":"z20j6crg"}
+{"time":"2024-11-07T09:42:45.683879581+09:00","level":"INFO","msg":"stream: started","id":"z20j6crg"}
+{"time":"2024-11-07T09:42:45.683962001+09:00","level":"INFO","msg":"sender: started","stream_id":"z20j6crg"}
+{"time":"2024-11-07T09:42:45.683897101+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"z20j6crg"}}
+{"time":"2024-11-07T09:42:45.683936441+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"z20j6crg"}}
+{"time":"2024-11-07T09:42:47.328429652+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T09:43:34.554704331+09:00","level":"INFO","msg":"stream: closing","id":"z20j6crg"}
+{"time":"2024-11-07T09:43:34.554848221+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T09:43:34.55630796+09:00","level":"INFO","msg":"Stopped system monitor"}

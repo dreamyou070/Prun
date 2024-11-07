@@ -31,7 +31,7 @@ from diffusers.pipelines.free_init_utils import FreeInitMixin
 from diffusers.pipelines.pipeline_utils import DiffusionPipeline, StableDiffusionMixin
 from diffusers.pipelines.animatediff.pipeline_output import AnimateDiffPipelineOutput
 
-from videodistill.models.motion import MotionAdapter, UNetMotionModel
+from prun.models.motion import MotionAdapter, UNetMotionModel
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 

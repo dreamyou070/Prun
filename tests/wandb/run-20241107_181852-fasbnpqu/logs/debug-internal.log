@@ -1,0 +1,16 @@
+{"time":"2024-11-07T18:18:52.766006455+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T18:18:52.766021205+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_181852-fasbnpqu/logs/debug-core.log"}
+{"time":"2024-11-07T18:18:52.900752958+09:00","level":"INFO","msg":"created new stream","id":"fasbnpqu"}
+{"time":"2024-11-07T18:18:52.900804498+09:00","level":"INFO","msg":"stream: started","id":"fasbnpqu"}
+{"time":"2024-11-07T18:18:52.900938568+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"fasbnpqu"}}
+{"time":"2024-11-07T18:18:52.900882218+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"fasbnpqu"}}
+{"time":"2024-11-07T18:18:52.900946078+09:00","level":"INFO","msg":"sender: started","stream_id":"fasbnpqu"}
+{"time":"2024-11-07T18:18:55.922718878+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T18:19:36.89467054+09:00","level":"INFO","msg":"stream: closing","id":"fasbnpqu"}
+{"time":"2024-11-07T18:19:36.89476056+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T18:19:36.896736124+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-07T18:19:38.702552918+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-07T18:19:40.632106053+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"fasbnpqu"}}
+{"time":"2024-11-07T18:19:40.632160003+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"fasbnpqu"}}
+{"time":"2024-11-07T18:19:40.632181643+09:00","level":"INFO","msg":"sender: closed","stream_id":"fasbnpqu"}
+{"time":"2024-11-07T18:19:40.642748465+09:00","level":"INFO","msg":"stream: closed","id":"fasbnpqu"}

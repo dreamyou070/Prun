@@ -1,0 +1,11 @@
+{"time":"2024-11-07T16:49:31.742129222+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T16:49:31.742143272+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_164931-ddraf3rm/logs/debug-core.log"}
+{"time":"2024-11-07T16:49:31.855850977+09:00","level":"INFO","msg":"created new stream","id":"ddraf3rm"}
+{"time":"2024-11-07T16:49:31.855894667+09:00","level":"INFO","msg":"stream: started","id":"ddraf3rm"}
+{"time":"2024-11-07T16:49:31.855935587+09:00","level":"INFO","msg":"sender: started","stream_id":"ddraf3rm"}
+{"time":"2024-11-07T16:49:31.855935437+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ddraf3rm"}}
+{"time":"2024-11-07T16:49:31.855904557+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ddraf3rm"}}
+{"time":"2024-11-07T16:49:32.198023155+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T16:50:45.58917324+09:00","level":"INFO","msg":"stream: closing","id":"ddraf3rm"}
+{"time":"2024-11-07T16:50:45.58940713+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T16:50:45.590211423+09:00","level":"INFO","msg":"Stopped system monitor"}

@@ -1,0 +1,58 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...:   0%|                                                                                                                                                                                                                                   | 0/6 [00:00<?, ?it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:03<00:00,  1.77it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:02<00:00,  2.59it/s]
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3) sub models
+
+ step 4. optimizer
+ step 5. make dataloader
+loading annotations from /scratch2/dreamyou070/MyData/video/openvid_1M_sample.csv ...
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 520, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 298, in main
+    train_dataset = DistillWebVid10M(csv_path=args.csv_path,
+  File "/home/dreamyou070/Prun/src/prun/data/__init__.py", line 20, in __init__
+    self.dataset = list(csv.DictReader(csvfile))
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/csv.py", line 111, in __next__
+    row = next(self.reader)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 520, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 298, in main
+[rank0]:     train_dataset = DistillWebVid10M(csv_path=args.csv_path,
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/data/__init__.py", line 20, in __init__
+[rank0]:     self.dataset = list(csv.DictReader(csvfile))
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/csv.py", line 111, in __next__
+[rank0]:     row = next(self.reader)
+[rank0]: KeyboardInterrupt

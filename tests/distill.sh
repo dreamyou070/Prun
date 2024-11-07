@@ -15,7 +15,7 @@ target_block_num=10
 FOLDER="multigpu_test"
 
 accelerate launch \
- --config_file $HOME/gpu_config/gpu_0_config \
+ --config_file $HOME/gpu_config/gpu_0_1_2_config \
  --main_process_port $port_number \
  distill.py \
  --output_dir "/scratch2/dreamyou070/Prun/result/distill/${FOLDER}" \

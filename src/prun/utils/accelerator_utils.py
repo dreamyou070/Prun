@@ -6,10 +6,7 @@ import os
 
 def make_accelerator(args) :
     
-    if args.add_qkv :
-        args.find_unused_parameters = True # there is unused parameters 
-    
-    ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=args.find_unused_parameters)
+    ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
     kwargs = InitProcessGroupKwargs(timeout=timedelta(seconds=30000))
     # gradient_accumulation_steps=args.gradient_accumulation_steps
     # 설명: Gradient accumulation steps를 설정합니다. 이 값은 매 업데이트마다 몇 번의 배치의 gradient를 모아서 업데이트할지를 결정합니다. 예를 들어, gradient_accumulation_steps가 4로 설정되어 있다면, 4개의 배치를 처리한 후에 gradient를 업데이트합니다.
@@ -23,7 +20,7 @@ def make_accelerator(args) :
     # 설명: 배치를 분할할지 여부를 결정합니다. WebDataset을 사용하는 경우, 이 값을 True로 설정하는 것이 중요합니다. split_batches=True일 때는 각 프로세스가 배치를 나누어 사용하고, 학습률 스케줄링에 올바른 스텝 수를 반영할 수 있습니다. 이 값을 False로 설정하면, 배치가 프로세스 수에 따라 나뉘며, 배치 크기가 프로세스 수에 의해 곱해져서 스텝 수가 나뉘어질 수 있습니다.
     accelerator = Accelerator(gradient_accumulation_steps=args.gradient_accumulation_steps,
                                 mixed_precision=args.mixed_precision,
-                                log_with=args.report_to,
+                                #log_with=args.report_to,
                                 kwargs_handlers=[kwargs,ddp_kwargs],)
     return accelerator
 

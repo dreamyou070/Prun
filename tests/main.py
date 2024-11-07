@@ -1,16 +1,25 @@
-import os
+import torch
+from diffusers import AnimateDiffPipeline, LCMScheduler, MotionAdapter
+from diffusers.utils import export_to_gif
 
-csv_path = '/scratch2/dreamyou070/MyData/video/openvid_1M/sample.csv'
-with open(csv_path, 'r') as f:
-    lines = f.readlines()
+adapter = MotionAdapter.from_pretrained("wangfuyun/AnimateLCM", torch_dtype=torch.float16)
+pipe = AnimateDiffPipeline.from_pretrained("emilianJR/epiCRealism", motion_adapter=adapter, torch_dtype=torch.float16)
+pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config, beta_schedule="linear")
 
-for line in lines :
-    print(line)
-    break
+pipe.load_lora_weights("wangfuyun/AnimateLCM", weight_name="AnimateLCM_sd15_t2v_lora.safetensors", adapter_name="lcm-lora")
+pipe.set_adapters(["lcm-lora"], [0.8])
 
-sample_folder =  '/scratch2/dreamyou070/MyData/video/openvid_1M/sample'
-folders = os.listdir(sample_folder)
-for folder in folders :
-    folder_dir = os.path.join(sample_folder, folder)
-    files=os.listdir(folder_dir)
-    print(f'len of files = {len(files)}')
+pipe.enable_vae_slicing()
+pipe.enable_model_cpu_offload()
+
+output = pipe(
+    prompt="A space rocket with trails of smoke behind it launching into space from the desert, 4k, high resolution",
+    negative_prompt="bad quality, worse quality, low resolution",
+    num_frames=16,
+    guidance_scale=2.0,
+    num_inference_steps=6,
+    generator=torch.Generator("cpu").manual_seed(0),
+)
+frames = output.frames[0]
+export_to_gif(frames, "animatelcm.gif")
+

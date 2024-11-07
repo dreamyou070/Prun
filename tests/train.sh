@@ -25,8 +25,7 @@ accelerate launch \
  --video_folder "/scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample" \
  --per_gpu_batch_size 1 \
  --gradient_checkpointing \
- --datavideo_size 64 \
- --architecture "[0, 1, 2, 3, 4, 6, 14, 15, 16, 20]"
+ --datavideo_size 64 --do_distill
 
 
 # sbatch -p suma_a6000 -q big_qos --gres=gpu:1 --time 48:00:00 animatelcm_evolutionary_algorithm_search.sh

@@ -1,0 +1,8 @@
+{"time":"2024-11-07T15:23:20.92712396+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T15:23:20.92713912+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_152320-scdo6x82/logs/debug-core.log"}
+{"time":"2024-11-07T15:23:21.059943519+09:00","level":"INFO","msg":"created new stream","id":"scdo6x82"}
+{"time":"2024-11-07T15:23:21.059985939+09:00","level":"INFO","msg":"stream: started","id":"scdo6x82"}
+{"time":"2024-11-07T15:23:21.060092389+09:00","level":"INFO","msg":"sender: started","stream_id":"scdo6x82"}
+{"time":"2024-11-07T15:23:21.060050399+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"scdo6x82"}}
+{"time":"2024-11-07T15:23:21.060113459+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"scdo6x82"}}
+{"time":"2024-11-07T15:23:21.385574695+09:00","level":"INFO","msg":"Starting system monitor"}

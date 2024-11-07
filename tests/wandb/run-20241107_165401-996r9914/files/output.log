@@ -1,0 +1,54 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...:  67%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                         | 4/6 [00:03<00:02,  1.02s/it]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:03<00:00,  1.94it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:03<00:00,  1.80it/s]
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3) sub models
+
+ step 4. optimizer
+ step 5. make dataloader
+loading annotations from /scratch2/dreamyou070/MyData/video/panda/test_sample_trimmed/sample.csv ...
+ step 7. accelerator prepare
+ ***** student_unet gradient checkpointing *****
+ step 8. train
+ [main process] total_loss = 2.3394534587860107 device = cuda:0
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/simple_train.py", line 475, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/simple_train.py", line 385, in main
+    "total_loss": total_loss.detach().item()}, step=global_step)
+UnboundLocalError: local variable 'global_step' referenced before assignment
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/simple_train.py", line 475, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/simple_train.py", line 385, in main
+[rank0]:     "total_loss": total_loss.detach().item()}, step=global_step)
+[rank0]: UnboundLocalError: local variable 'global_step' referenced before assignment

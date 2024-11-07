@@ -1,0 +1,7 @@
+{"time":"2024-11-07T16:18:48.059754525+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T16:18:48.059774335+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_161848-k57pyxoa/logs/debug-core.log"}
+{"time":"2024-11-07T16:18:48.467178952+09:00","level":"INFO","msg":"created new stream","id":"k57pyxoa"}
+{"time":"2024-11-07T16:18:48.467227863+09:00","level":"INFO","msg":"stream: started","id":"k57pyxoa"}
+{"time":"2024-11-07T16:18:48.467324863+09:00","level":"INFO","msg":"sender: started","stream_id":"k57pyxoa"}
+{"time":"2024-11-07T16:18:48.467300733+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"k57pyxoa"}}
+{"time":"2024-11-07T16:18:48.467292033+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"k57pyxoa"}}

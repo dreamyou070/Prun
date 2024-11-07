@@ -8,7 +8,7 @@
 # Optical Flow는 비디오에서의 motion 정보를 추출하는 대표적인 방법입니다.
 # Teacher 모델의 프레임들 사이에서 Optical Flow를 계산하고, 학생 모델이 이 Optical Flow 패턴을 모방하도록 학습시키는 방법입니다.
 # Implementation:
-# 프레임 간 Optical Flow를 계산한 후, Optical Flow와 학생 모델의 프레임 간 차이를 비교하는 loss를 정의할 수 있습니다.
+import sys
 import os
 import math
 import wandb
@@ -26,19 +26,19 @@ import torch
 import torch.nn.functional as F
 from diffusers.optimization import get_scheduler
 from diffusers.utils import check_min_version
-from videodistill.models.motion import MotionAdapter
-from videodistill.models.pipelines import AnimateDiffPipeline
-from videodistill.models.scheduler import LCMScheduler
-from videodistill.data import DistillWebVid10M
-from videodistill.utils.layer_dictionary import find_layer_name, find_next_layer_name
-from videodistill.attn.masactrl_utils import register_motion_editor
-from videodistill.attn.controller import MotionControl
-from videodistill.utils.accelerator_utils import make_accelerator, get_folder, make_skip_layers_dot
+from prun.models.motion import MotionAdapter
+from prun.models.pipelines import AnimateDiffPipeline
+from prun.models.scheduler import LCMScheduler
+from prun.data import DistillWebVid10M
+from prun.utils.layer_dictionary import find_layer_name, find_next_layer_name
+from prun.attn.masactrl_utils import register_motion_editor
+from prun.attn.controller import MotionControl
+from prun.utils.accelerator_utils import make_accelerator, get_folder, make_skip_layers_dot
 from diffusers.utils import export_to_gif, export_to_video, load_image
 import GPUtil
 import json
 from diffusers import DDPMScheduler, DDIMScheduler
-from videodistill.utils.diffusion_misc import *
+from prun.utils.diffusion_misc import *
 from diffusers.video_processor import VideoProcessor
 import numpy as np
 import torchvision
@@ -46,8 +46,8 @@ import imageio
 import yaml
 from safetensors.torch import save_file
 from safetensors import safe_open
-from videodistill.utils import arg_as_list
-from videodistill.ode_solver import DDIMSolver
+from prun.utils import arg_as_list
+from prun.ode_solver import DDIMSolver
 from torch import nn
 
 
@@ -142,19 +142,17 @@ def main(args):
     num_frames = args.num_frames
     num_inference_steps = args.inference_step
     n_prompt = "bad quality, worse quality, low resolution"
-    custom_prompt_dir = r'/home/dreamyou070/VideoDistill/src/configs/prompts.txt'
+    custom_prompt_dir = r'/home/dreamyou070/Prun/src/prun/configs/prompts.txt'
     with open(custom_prompt_dir, 'r') as f:
         custom_prompts = f.readlines()
-    panda_based_prompt_dir = r'/home/dreamyou070/VideoDistill/src/configs/panda_based_prompts.txt'
-    with open(panda_based_prompt_dir, 'r') as f:
-        panda_based_prompts = f.readlines()
+
 
     logger.info(f'\n step 1. setting')
     torch.manual_seed(args.seed)
     weight_dtype = torch.float32
 
     logger.info(f'\n step 2. accelerator and file')
-    accelerator = make_accelerator()
+    accelerator = make_accelerator(args)
     is_main_process = accelerator.is_main_process
     output_dir, custom_save_folder, eval_save_folder, sanity_folder, model_save_dir, log_folder = get_folder(
         args.output_dir,
@@ -180,6 +178,8 @@ def main(args):
     teacher_adapter = MotionAdapter.from_pretrained(args.teacher_motion_model_dir, torch_dtpe=weight_dtype)
     if args.pretrained_teacher_adapter:
         pretrained_state_dict = torch.load(args.pretrained_teacher_adapter, map_location="cpu")
+
+    args.pretrained_model_path = "emilianJR/epiCRealism"
     teacher_pipe = AnimateDiffPipeline.from_pretrained(args.pretrained_model_path,
                                                        motion_adapter=teacher_adapter,
                                                        torch_dtpe=weight_dtype)
@@ -201,7 +201,7 @@ def main(args):
                                               is_teacher=True,
                                               train=True,
                                               do_save_attention_map=args.do_save_attention_map)  # 32
-    register_motion_editor(teacher_unet, teacher_motion_controller, args)
+    register_motion_editor(teacher_unet, teacher_motion_controller)
 
     logger.info(f'\n step 5. other models')
     tokenizer = teacher_pipe.tokenizer
@@ -228,7 +228,7 @@ def main(args):
                                               is_teacher=False,
                                               train=True,
                                               do_save_attention_map=args.do_save_attention_map)
-    register_motion_editor(student_unet, student_motion_controller, args)
+    register_motion_editor(student_unet, student_motion_controller)
     if args.pretrained_student_adapter:
         pretrained_state_dict = torch.load(args.pretrained_student_adapter, map_location="cpu")
         for k, v in student_unet.named_parameters():
@@ -263,6 +263,8 @@ def main(args):
     else:
         optimizer_cls = torch.optim.AdamW
     parameters_list = []
+
+    args.skip_layers = ['up_blocks_0_motion_modules_0']
     skip_layers_dot = make_skip_layers_dot(args.skip_layers)
     student_unet.requires_grad_(False)
     for name, para in student_unet.named_parameters():
@@ -342,9 +344,7 @@ def main(args):
 
         f_2 = os.path.join(eval_save_folder, 'teacher')
         os.makedirs(f_2, exist_ok=True)
-        for p, prompt in enumerate(panda_based_prompts):
-            evaluateion(prompt, teacher_pipe, teacher_motion_controller, f_2, n_prompt, num_frames, guidance_scale,
-                        num_inference_steps)
+
 
     print(f' step 15. Train!')
     num_update_steps_per_epoch = math.ceil(len(train_dataloader) / args.gradient_accumulation_steps)
@@ -376,6 +376,7 @@ def main(args):
     student_unet, optimizer, lr_scheduler, train_dataloader = accelerator.prepare(student_unet, optimizer, lr_scheduler,
                                                                                   train_dataloader)
 
+    first_epoch, args.num_train_epochs = 0, 10
     for epoch in range(first_epoch, args.num_train_epochs):
         teacher_unet.eval()
         student_unet.train()
@@ -438,11 +439,7 @@ def main(args):
                         os.makedirs(f_1, exist_ok=True)
                         evaluateion(prompt, eval_pipe, eval_motion_controller, f_1, n_prompt, num_frames,
                                     guidance_scale, num_inference_steps)
-                    for p, prompt in enumerate(panda_based_prompts):
-                        f_2 = os.path.join(eval_save_folder, f'student_epoch_{str(epoch).zfill(3)}')
-                        os.makedirs(f_2, exist_ok=True)
-                        evaluateion(prompt, eval_pipe, student_motion_controller, f_2, n_prompt, num_frames,
-                                    guidance_scale, num_inference_steps)
+
                     del eval_pipe, eval_unet, eval_motion_controller, eval_adapter, eval_trained_value, eval_state_dict
             # accelerator.wait_for_everyone()
 

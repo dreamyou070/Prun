@@ -24,7 +24,7 @@ from diffusers.models.modeling_utils import ModelMixin
 from diffusers.models.transformers.transformer_temporal import TransformerTemporalModel
 from diffusers.models.unets.unet_2d_blocks import UNetMidBlock2DCrossAttn
 from diffusers.models.unets.unet_2d_condition import UNet2DConditionModel
-from .unet_3d_blocks import (
+from prun.models.unet_3d_blocks import (
     CrossAttnDownBlockMotion,
     CrossAttnUpBlockMotion,
     DownBlockMotion,

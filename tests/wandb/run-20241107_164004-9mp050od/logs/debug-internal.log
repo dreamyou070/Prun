@@ -1,0 +1,11 @@
+{"time":"2024-11-07T16:40:04.417501309+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T16:40:04.41752239+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_164004-9mp050od/logs/debug-core.log"}
+{"time":"2024-11-07T16:40:04.52967644+09:00","level":"INFO","msg":"created new stream","id":"9mp050od"}
+{"time":"2024-11-07T16:40:04.52973591+09:00","level":"INFO","msg":"stream: started","id":"9mp050od"}
+{"time":"2024-11-07T16:40:04.52978464+09:00","level":"INFO","msg":"sender: started","stream_id":"9mp050od"}
+{"time":"2024-11-07T16:40:04.52975722+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"9mp050od"}}
+{"time":"2024-11-07T16:40:04.52977815+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"9mp050od"}}
+{"time":"2024-11-07T16:40:05.030940096+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T16:40:26.135783404+09:00","level":"INFO","msg":"stream: closing","id":"9mp050od"}
+{"time":"2024-11-07T16:40:26.135949664+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T16:40:26.136846377+09:00","level":"INFO","msg":"Stopped system monitor"}

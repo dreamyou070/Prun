@@ -1,0 +1,11 @@
+{"time":"2024-11-07T16:42:54.144325086+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T16:42:54.144338296+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_164254-utrxttls/logs/debug-core.log"}
+{"time":"2024-11-07T16:42:54.256093696+09:00","level":"INFO","msg":"created new stream","id":"utrxttls"}
+{"time":"2024-11-07T16:42:54.256123196+09:00","level":"INFO","msg":"stream: started","id":"utrxttls"}
+{"time":"2024-11-07T16:42:54.256242336+09:00","level":"INFO","msg":"sender: started","stream_id":"utrxttls"}
+{"time":"2024-11-07T16:42:54.256201066+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"utrxttls"}}
+{"time":"2024-11-07T16:42:54.256276016+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"utrxttls"}}
+{"time":"2024-11-07T16:42:55.676394019+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T16:43:18.436470422+09:00","level":"INFO","msg":"stream: closing","id":"utrxttls"}
+{"time":"2024-11-07T16:43:18.436547033+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T16:43:18.437159044+09:00","level":"INFO","msg":"Stopped system monitor"}

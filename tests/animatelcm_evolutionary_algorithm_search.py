@@ -119,6 +119,17 @@ class GeneticAlgorithm:
         self.candidates = []
         self.max_prompt = max_prompt
 
+    def generate_initial_population(self):
+        # 초기 개체군을 생성하는 메서드
+        population = []
+        for _ in range(self.population_size):
+            # 임의로 X 개의 블록을 샘플링 (X는 min_blocks와 max_blocks 사이에서 랜덤)
+            target_block_num = random.randint(self.min_blocks, self.max_blocks)  # 임의의 블록 수 결정
+            architecture = sorted(random.sample(range(self.total_block_num),
+                                                k=target_block_num))  # 선택된 블록 수 만큼 샘플링
+            population.append(architecture)  # 생성된 아키텍처를 개체군에 추가
+        return population
+
     def _load_inceptionv3_model(self):
         model = models.inception_v3(pretrained=True)
         model.fc = nn.Identity()  # Remove the final classification layer
@@ -329,6 +340,8 @@ class GeneticAlgorithm:
         return children
 
     def evolve(self) :
+
+
         # total record = self.test_record
 
         # [1.1] initial population : 1

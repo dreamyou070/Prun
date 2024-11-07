@@ -1,0 +1,8 @@
+{"time":"2024-11-07T15:46:03.040127743+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T15:46:03.040155463+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_154602-ctx24s1k/logs/debug-core.log"}
+{"time":"2024-11-07T15:46:03.181311609+09:00","level":"INFO","msg":"created new stream","id":"ctx24s1k"}
+{"time":"2024-11-07T15:46:03.181390729+09:00","level":"INFO","msg":"stream: started","id":"ctx24s1k"}
+{"time":"2024-11-07T15:46:03.1814922+09:00","level":"INFO","msg":"sender: started","stream_id":"ctx24s1k"}
+{"time":"2024-11-07T15:46:03.181431+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ctx24s1k"}}
+{"time":"2024-11-07T15:46:03.18149913+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ctx24s1k"}}
+{"time":"2024-11-07T15:46:03.599913482+09:00","level":"INFO","msg":"Starting system monitor"}

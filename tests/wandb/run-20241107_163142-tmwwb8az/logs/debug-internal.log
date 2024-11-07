@@ -1,0 +1,7 @@
+{"time":"2024-11-07T16:31:42.096657193+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T16:31:42.096673993+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_163142-tmwwb8az/logs/debug-core.log"}
+{"time":"2024-11-07T16:31:42.214453145+09:00","level":"INFO","msg":"created new stream","id":"tmwwb8az"}
+{"time":"2024-11-07T16:31:42.214493945+09:00","level":"INFO","msg":"stream: started","id":"tmwwb8az"}
+{"time":"2024-11-07T16:31:42.214640726+09:00","level":"INFO","msg":"sender: started","stream_id":"tmwwb8az"}
+{"time":"2024-11-07T16:31:42.214541765+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"tmwwb8az"}}
+{"time":"2024-11-07T16:31:42.214601956+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"tmwwb8az"}}

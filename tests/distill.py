@@ -57,6 +57,8 @@ class DDIMSolver:
         return x_prev
 
 
+# 간단한 SE Block 으로 바꿔서 해보기
+
 class SimpleAttention(nn.Module):
 
     def __init__(self, dim, heads=8, layer_name=""):

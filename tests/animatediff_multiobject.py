@@ -14,10 +14,12 @@ from diffusers import AnimateDiffPipeline, LCMScheduler, MotionAdapter
 from diffusers.utils import export_to_gif, export_to_video
 
 class MultiObjectiveGeneticAlgorithm:
-    def __init__(self, population_size=50, generations=100, mutation_rate=0.1, total_block_num=21,
+    def __init__(self, population_size=50,
+                 generations=100, mutation_rate=0.1, total_block_num=21,
                  test_pipe=None, test_prompts=None, max_prompt=10, weight_dtype=torch.float32,
                  log_dir='log',
                  output_dir='output'):
+
         # 클래스 초기화: 인구 수, 세대 수, 돌연변이 비율, 블록 수 설정
         self.population_size = population_size
         self.generations = generations
@@ -59,7 +61,7 @@ class MultiObjectiveGeneticAlgorithm:
         # [2] save folder
         self.base_folder = output_dir
         os.makedirs(self.base_folder, exist_ok=True)
-        self.done_list = []
+        self.checked_arch = {}
         self.log_dir = log_dir
 
     def generate_initial_population(self):
@@ -70,6 +72,17 @@ class MultiObjectiveGeneticAlgorithm:
             architecture = sorted(random.sample(range(self.total_block_num), k=self.target_block_num))
             population.append(architecture)  # 생성된 아키텍처를 개체군에 추가
         return population
+
+    def generate_initial_population(self):
+        # 초기 개체군을 생성하는 메서드
+        population = []
+        for _ in range(self.population_size):
+            # random target block num = X (sampling)
+            target_block_num = random.randint(self.min_blocks, self.max_blocks)  # 임의의 블록 수 결정
+            architecture = sorted(random.sample(range(self.total_block_num), k=target_block_num))  # 선택된 블록 수 만큼 샘플링
+            population.append(architecture)  # 생성된 아키텍처를 개체군에 추가
+        return population
+
     def model_inference_and_save(self, architecture, folder):
 
         # [1.1] make pruning model
@@ -140,17 +153,24 @@ class MultiObjectiveGeneticAlgorithm:
             architecture_folder = os.path.join(self.base_folder, f'teacher')
 
         else :
-            # 해당 구조를 이용해서 모델을 만들고 비디오를 생성하기
-            folder_name = ""
-            for i in architecture:  # using ?
-                folder_name += f'{i}-'
-            architecture_folder = os.path.join(self.base_folder, f'pruned_using_{folder_name}architecture')
-
-        os.makedirs(architecture_folder, exist_ok=True)
-        self.model_inference_and_save(architecture, folder = architecture_folder)
-        dynamic_mean = self.evaluate_motion_dynamics(architecture_folder)  # dynamic score
-        motion_smooth_mean = self.evaluate_motion_smoothness(architecture_folder)
-        subject_consistency = self.evaluate_subject_consistency(architecture_folder)
+            if tuple(architecture) not in self.checked_arch.keys() :
+                self.checked_arch[tuple(architecture)] = {}
+                # 해당 구조를 이용해서 모델을 만들고 비디오를 생성하기
+                folder_name = ""
+                for i in architecture:  # using ?
+                    folder_name += f'{i}-'
+                architecture_folder = os.path.join(self.base_folder, f'pruned_using_{folder_name}architecture')
+                os.makedirs(architecture_folder, exist_ok=True)
+                self.model_inference_and_save(architecture, folder = architecture_folder)
+                dynamic_mean = self.evaluate_motion_dynamics(architecture_folder)  # dynamic score
+                motion_smooth_mean = self.evaluate_motion_smoothness(architecture_folder)
+                subject_consistency = self.evaluate_subject_consistency(architecture_folder)
+                self.checked_arch[tuple(architecture)] = {'dynamic score' : dynamic_mean,
+                                                           'motion smoothness' : motion_smooth_mean,
+                                                           'subject consistency' : subject_consistency}
+            else :
+                item = self.checked_arch[tuple(architecture)]
+                dynamic_mean, motion_smooth_mean, subject_consistency = item['dynamic score'], item['motion smoothness'], item['subject consistency']
         return dynamic_mean, motion_smooth_mean, subject_consistency
 
     def non_dominated_sort(self):
@@ -163,8 +183,8 @@ class MultiObjectiveGeneticAlgorithm:
         :return:
         """
 
-        population_size = len(self.population)  # 2
-        dominated_count = [0] * population_size  # [0, 0]
+        population_size = len(self.population)            # 2
+        dominated_count = [0] * population_size           # [0, 0]
         dominates = [[] for _ in range(population_size)]  # make [[], [], ..., []]
         front = [[]]
 
@@ -172,8 +192,10 @@ class MultiObjectiveGeneticAlgorithm:
         scores = [self.evaluate_architecture(arch) for arch in self.population]
         # scores = [(1.0, 0.8781185581125354, 0.8563813944657643), (1.0, 0.9441134177670091, 0.9344936947027842)]
         # second one has higher score
+
         for p in range(population_size):
             # [1] check all neighbors
+
             for q in range(population_size):
                 if p != q:
                     # scores[p] = score_p
@@ -184,52 +206,51 @@ class MultiObjectiveGeneticAlgorithm:
                     elif all(scores[q][i] <= scores[p][i] for i in range(len(scores[p]))) and any(scores[q][i] < scores[p][i] for i in range(len(scores[p]))):
                         # if P is stron,
                         dominated_count[p] += 1
-            # if P is really week, it is the first front
-            # 첫번째 비지배적 집합들을 의미한다.
-            # 즉 서로 지배 관계가 없는 것을 1차적으로 넣는다.
+            # make pareto front
             if dominated_count[p] == 0:
-                # front[0] = [0
                 front[0].append(p)
-
-        # 다음 Front 찾기
+        # pareto_front = [[1,2,3],[4,5,6]]
         i = 0
         while front[i]:
-            # fronm front[0]
-            # front[2]
             next_front = []
             for p in front[i]:
-                # all week samples,
                 for q in dominates[p]:
-                    # week samples controller
                     dominated_count[q] -= 1 # using domaintaes list
-                    # if p has only one contoled sample, it is now to the next front
                     if dominated_count[q] == 0:
                         next_front.append(q)
             i += 1
             front.append(next_front)
-            # [[0],[1]]
-            # [[0],[1],[]]
-            print(f'after {i} iteration, front = {front}')
-        print(f'final front = {front}')
-        # [[1], [0]]
         return front
 
     def sort_population(self):
 
-        # ---------------------------------------- make pareto_front ----------------------------------------
-        # Pareto Front를 사용하여 개체 정렬
-        # list composed of pareto fronts
+        # sorting by one merged score
+
         fronts = self.non_dominated_sort() # [[1], [0]]
         sorted_population = []
-
-        for front in fronts:
-            print(f'front = {front}')
+        score_dict = {}
+        for m, front in enumerate(fronts):
+            # front is architecture index
             front_scores = [self.evaluate_architecture(self.population[i]) for i in front]
-            # [(score1, score2, score3)] 형태로 점수를 얻는다.
+            # [(score1, score2, score3) (score1, score2, score3)] 형태로 점수를 얻는다.
             weights = [0.2, .4, .4]
+            # front_scores is list of score set
+            # TODO
             sorted_front = sorted(front,
-                                  key=lambda index: sum(weights[i] * front_scores[front.index(index)][i] for i in range(len(weights))))
+                                  key=lambda index: sum(weights[i] * front_scores[index][i] for i in range(len(weights))))
             sorted_population.extend(sorted_front)
+
+            for score, idx in zip(front_scores, front) :
+                avg_score = sum(weights[i] * s for i, s in enumerate(score))
+                score_dict[idx] = avg_score
+
+        # save front (index) with score
+        # sorting 오름차순
+        score_dict = dict(sorted(score_dict.items(), key=lambda item: item[1]), reverse = True)
+        print(f' after sorting, score_dict = {score_dict}')
+        # ---------------------------------------------------------------------------------------------
+        # sort sorted_population (sorted population is a list)
+        # sort score_dict by score
 
         # 정렬된 인덱스를 사용하여 개체군 정렬
         # make new generation
@@ -251,7 +272,6 @@ class MultiObjectiveGeneticAlgorithm:
         return architecture  # 변이가 적용된 아키텍처 반환
 
     def reference(self):
-
         self.evaluate_architecture(arch=None)
     def run(self):
 

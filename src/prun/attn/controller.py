@@ -221,7 +221,9 @@ class MotionControl(nn.Module,AttentionBase):
 
     def set_timestep(self, timestep):
         self.timestep = timestep
-        
+
+    # motion_block_num = 1 부터 시작하고, 21까지 되면 다시 0 이 된다.
+    # editor.timestep
     def time_resetting(self) :
         self.motion_block_num += 1        
         if self.motion_block_num % 21 == 0 :
@@ -311,8 +313,7 @@ class MotionControl(nn.Module,AttentionBase):
         attn_bias = torch.zeros(L, S, dtype=q.dtype).to(q.device)
         attn_weight = q @ k.transpose(-2, -1) * scale_factor  # [head, frame*pixel, pixel]
         attn_weight += attn_bias
-        attn_weight = torch.softmax(attn_weight,
-                                    dim=-1)  # [batch*pixel_num,head, frame, frame] # last frame is only one
+        attn_weight = torch.softmax(attn_weight, dim=-1)  # [batch*pixel_num,head, frame, frame] # last frame is only one
         attn_weight = torch.dropout(attn_weight, dropout_p, train=True)
         hidden = attn_weight @ v  # head, (2*pixel_num) dim
         hidden = rearrange(hidden, 'h f p d -> f h p d', f=frame_num)  # 2, 8, pixel_num, dim

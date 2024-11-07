@@ -42,9 +42,6 @@ class SinusoidalPositionalEmbedding_custom(nn.Module):
         return x
 
 
-
-
-
 def register_motion_editor(unet, editor: AttentionBase):
 
     class SimpleAttention(nn.Module):
@@ -106,8 +103,6 @@ def register_motion_editor(unet, editor: AttentionBase):
                 return (output,)
             return TransformerTemporalModelOutput(sample=output)
 
-
-
     def motion_forward_basic(self, layer_name):
 
         def forward(hidden_states: torch.Tensor,
@@ -119,6 +114,7 @@ def register_motion_editor(unet, editor: AttentionBase):
                     return_dict: bool = True, ) -> TransformerTemporalModelOutput:
 
             do_skip = False
+            editor.timestepwise()
             #for skip_layer in editor.skip_layers:
             #    if skip_layer == layer_name.lower() and editor.timestep == editor.target_time:
             #        do_skip = True
@@ -552,9 +548,25 @@ def register_motion_editor(unet, editor: AttentionBase):
                 L, S = query.size(-2), key.size(-2)
                 scale_factor = 1 / math.sqrt(query.size(-1))
                 attn_bias = torch.zeros(L, S, dtype=query.dtype).to(query.device)
-                attn_weight = query @ key.transpose(-2, -1) * scale_factor
-                attn_weight += attn_bias
-                attn_weight = torch.softmax(attn_weight, dim=-1)
+
+                if editor.first_frame_iter and editor.timestep < 3 and 'mid' in layer_name.lower() :
+                    # only two time
+                    unconq, conq = query.chunk(2, dim=0)
+                    unconk, conk = key.chunk(2, dim=0)
+                    first_unconq, first_conq = unconq[0, :, :, :].unsqueeze(0), conq[0, :, :, :].unsqueeze(0)
+                    first_unconk, first_conk = unconk[0, :, :, :].unsqueeze(0), conk[0, :, :, :].unsqueeze(0)
+                    first_uncon_weight = first_unconq @ first_unconk.transpose(-2, -1) * scale_factor
+                    first_con_weight = first_conq @ first_conk.transpose(-2, -1) * scale_factor
+                    if first_uncon_weight.dim() != 4 :
+                        first_uncon_weight = first_uncon_weight.unsqueeze(0)
+                        first_con_weight = first_con_weight.unsqueeze(0)
+                    uncon_weight = first_uncon_weight.repeat(16, 1, 1, 1)
+                    con_weight = first_con_weight.repeat(16, 1, 1, 1)
+                    attn_weight = torch.cat([uncon_weight, con_weight], dim=0)
+                else :
+                    attn_weight = query @ key.transpose(-2, -1) * scale_factor
+                    attn_weight += attn_bias
+                    attn_weight = torch.softmax(attn_weight, dim=-1)
                 attn_weight = torch.dropout(attn_weight, dropout_p, train=True)
                 return attn_weight @ value
 
@@ -601,7 +613,7 @@ def register_motion_editor(unet, editor: AttentionBase):
             final_name = f"{net_name}_{name}"
 
             # train only this module
-
+            """
             if subnet.__class__.__name__ == 'TransformerTemporalModel' or subnet.__class__.__name__ == 'AnimateDiffTransformer3D':
                 if final_name in editor.skip_layers:
 
@@ -616,18 +628,18 @@ def register_motion_editor(unet, editor: AttentionBase):
 
 
                 # caching the output (only the
-
+            """
             #if subnet.__class__.__name__ == 'BasicTransformerBlock' and 'motion' in final_name.lower():
             #    subnet.forward = motion_forward_basictransformerblock(subnet, final_name)
 
             #if subnet.__class__.__name__ == 'FeedForward' and 'motion' in final_name.lower():
             #    subnet.forward = motion_feedforward(subnet, final_name)
 
-            # if subnet.__class__.__name__ == 'Attention' and 'motion' not in final_name.lower():
-            #    subnet.forward = attention_forward(subnet, final_name)
+            if subnet.__class__.__name__ == 'Attention' and 'motion' not in final_name.lower():
+                subnet.forward = attention_forward(subnet, final_name)
 
-            if subnet.__class__.__name__ == 'Attention' and 'motion' in final_name.lower():
-                subnet.forward = motion_forward(subnet, final_name)  # attention again
+            # if subnet.__class__.__name__ == 'Attention' and 'motion' in final_name.lower():
+            #     subnet.forward = motion_forward(subnet, final_name)  # attention again
 
             if hasattr(net, 'children'):
                 count = register_editor(subnet, count, place_in_unet, final_name)

@@ -1,0 +1,79 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...:  67%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                         | 4/6 [00:02<00:01,  1.71it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:02<00:00,  2.70it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.13it/s]
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 520, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 218, in main
+    student_pipe = AnimateDiffPipeline.from_pretrained(args.pretrained_teacher_model,
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/pipeline_utils.py", line 972, in from_pretrained
+    model = pipeline_class(**init_kwargs)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/animatediff/pipeline_animatediff.py", line 100, in __init__
+    unet = UNetMotionModel.from_unet2d(unet, motion_adapter)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_motion_model.py", line 603, in from_unet2d
+    model = cls.from_config(config)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/configuration_utils.py", line 260, in from_config
+    model = cls(**init_dict)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/configuration_utils.py", line 658, in inner_init
+    init(self, *args, **init_kwargs)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_motion_model.py", line 490, in __init__
+    up_block = get_up_block(
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_3d_blocks.py", line 270, in get_up_block
+    return CrossAttnUpBlockMotion(
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_3d_blocks.py", line 1417, in __init__
+    self.upsamplers = nn.ModuleList([Upsample2D(out_channels, use_conv=True, out_channels=out_channels)])
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/upsampling.py", line 133, in __init__
+    conv = nn.Conv2d(self.channels, self.out_channels, kernel_size=kernel_size, padding=padding, bias=bias)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 521, in __init__
+    super().__init__(
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 176, in __init__
+    self.reset_parameters()
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 182, in reset_parameters
+    init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/init.py", line 518, in kaiming_uniform_
+    return tensor.uniform_(-bound, bound, generator=generator)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 520, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 218, in main
+[rank0]:     student_pipe = AnimateDiffPipeline.from_pretrained(args.pretrained_teacher_model,
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/pipeline_utils.py", line 972, in from_pretrained
+[rank0]:     model = pipeline_class(**init_kwargs)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/pipelines/animatediff/pipeline_animatediff.py", line 100, in __init__
+[rank0]:     unet = UNetMotionModel.from_unet2d(unet, motion_adapter)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_motion_model.py", line 603, in from_unet2d
+[rank0]:     model = cls.from_config(config)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/configuration_utils.py", line 260, in from_config
+[rank0]:     model = cls(**init_dict)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/configuration_utils.py", line 658, in inner_init
+[rank0]:     init(self, *args, **init_kwargs)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_motion_model.py", line 490, in __init__
+[rank0]:     up_block = get_up_block(
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_3d_blocks.py", line 270, in get_up_block
+[rank0]:     return CrossAttnUpBlockMotion(
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/unets/unet_3d_blocks.py", line 1417, in __init__
+[rank0]:     self.upsamplers = nn.ModuleList([Upsample2D(out_channels, use_conv=True, out_channels=out_channels)])
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/models/upsampling.py", line 133, in __init__
+[rank0]:     conv = nn.Conv2d(self.channels, self.out_channels, kernel_size=kernel_size, padding=padding, bias=bias)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 521, in __init__
+[rank0]:     super().__init__(
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 176, in __init__
+[rank0]:     self.reset_parameters()
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 182, in reset_parameters
+[rank0]:     init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/init.py", line 518, in kaiming_uniform_
+[rank0]:     return tensor.uniform_(-bound, bound, generator=generator)
+[rank0]: KeyboardInterrupt

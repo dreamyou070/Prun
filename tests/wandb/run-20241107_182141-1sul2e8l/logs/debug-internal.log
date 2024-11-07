@@ -1,0 +1,7 @@
+{"time":"2024-11-07T18:21:41.106748068+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T18:21:41.106764568+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_182141-1sul2e8l/logs/debug-core.log"}
+{"time":"2024-11-07T18:21:41.423234493+09:00","level":"INFO","msg":"created new stream","id":"1sul2e8l"}
+{"time":"2024-11-07T18:21:41.423357364+09:00","level":"INFO","msg":"stream: started","id":"1sul2e8l"}
+{"time":"2024-11-07T18:21:41.423308863+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"1sul2e8l"}}
+{"time":"2024-11-07T18:21:41.423381894+09:00","level":"INFO","msg":"sender: started","stream_id":"1sul2e8l"}
+{"time":"2024-11-07T18:21:41.423382094+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"1sul2e8l"}}

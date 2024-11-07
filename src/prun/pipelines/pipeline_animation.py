@@ -26,16 +26,7 @@ from diffusers.schedulers import (
 )
 from diffusers.utils import deprecate, logging, BaseOutput
 import os, sys
-current_dir = os.path.dirname(os.path.abspath(__file__))        # /home/dreamyou070/VideoDistill/src/videodistill/pipelines
-grandparent_dir = os.path.dirname(os.path.dirname(current_dir)) # /home/dreamyou070/src
-sys.path.append(grandparent_dir)
-print(f'grandparent_dir = {grandparent_dir}')
-videodistill_path = os.path.join(grandparent_dir, 'VideoDistill')
-sys.path.append(videodistill_path)
-#utils_path = os.path.join(grandparent_dir, 'VideoDistill/utils')
-#sys.path.append(utils_path)
-#print(f'utils_path = {utils_path}')
-from videodistill.utils.util import adjust_colors, resize_and_crop
+from prun.utils.util import adjust_colors, resize_and_crop
 from einops import rearrange
 from torchvision.transforms import ToTensor
 from ..models.unet import UNet3DConditionModel
