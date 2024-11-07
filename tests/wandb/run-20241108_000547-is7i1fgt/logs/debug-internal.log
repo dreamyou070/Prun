@@ -1,0 +1,8 @@
+{"time":"2024-11-08T00:05:47.101381931+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-08T00:05:47.101396141+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241108_000547-is7i1fgt/logs/debug-core.log"}
+{"time":"2024-11-08T00:05:47.254490662+09:00","level":"INFO","msg":"created new stream","id":"is7i1fgt"}
+{"time":"2024-11-08T00:05:47.254525382+09:00","level":"INFO","msg":"stream: started","id":"is7i1fgt"}
+{"time":"2024-11-08T00:05:47.254796303+09:00","level":"INFO","msg":"sender: started","stream_id":"is7i1fgt"}
+{"time":"2024-11-08T00:05:47.254564112+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"is7i1fgt"}}
+{"time":"2024-11-08T00:05:47.254590992+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"is7i1fgt"}}
+{"time":"2024-11-08T00:05:47.831050822+09:00","level":"INFO","msg":"Starting system monitor"}

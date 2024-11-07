@@ -1,0 +1,172 @@
+2024-11-08 01:06:05.057061: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-11-08 01:06:05.063087: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1730995565.070087 2144237 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1730995565.074104 2144237 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1730995565.077117 2144238 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1730995565.081458 2144238 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-11-08 01:06:05.089967: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-11-08 01:06:05.096410: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+ step 0. distribution setting
+ step 0. distribution setting
+| ID | GPU | MEM |
+------------------
+|  0 |  0% |  0% |
+|  1 |  0% |  0% |
+ step 1. logger and seed
+| ID | GPU | MEM |
+------------------
+|  0 |  0% |  0% |
+|  1 |  0% |  0% |
+ step 1. logger and seed
+wandb: Using wandb-core as the SDK backend. Please refer to https://wandb.me/wandb-core for more information.
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+wandb: Currently logged in as: dreamyou070. Use `wandb login --relogin` to force relogin
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+wandb: Tracking run with wandb version 0.18.5
+wandb: Run data is saved locally in /home/dreamyou070/Prun/tests/wandb/run-20241108_010612-qtweiqv1
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run openvid_data_distill_feature_matching
+wandb: ⭐️ View project at https://wandb.ai/dreamyou070/ondevice-video
+wandb: 🚀 View run at https://wandb.ai/dreamyou070/ondevice-video/runs/qtweiqv1
+Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:00,  4.98it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:00<00:00,  9.07it/s] step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  3.96it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:00<00:00, 14.64it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...:  83%|████████▎ | 5/6 [00:00<00:00,  7.50it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  2.96it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  3.91it/s]
+ (2) student pipe
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:00,  5.88it/s]Loading pipeline components...:  83%|████████▎ | 5/6 [00:00<00:00, 11.73it/s] (2) student pipe
+Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  4.60it/s]
+Loading pipeline components...:   0%|          | 0/6 [00:00<?, ?it/s]Loading pipeline components...:  50%|█████     | 3/6 [00:00<00:00, 22.55it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  4.07it/s]Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  4.64it/s]
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3) sub models
+
+ step 4. optimizer
+ step 5. make dataloader
+loading annotations from /scratch2/dreamyou070/MyData/video/openvid_1M_sample.csv ...
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3) sub models
+
+ step 4. optimizer
+ step 5. make dataloader
+loading annotations from /scratch2/dreamyou070/MyData/video/openvid_1M_sample.csv ...
+ step 7. accelerator prepare
+ ***** student_unet gradient checkpointing ***** 
+ step 8. train
+ step 7. accelerator prepare
+ ***** student_unet gradient checkpointing ***** 
+ step 8. train
+  0%|          | 0/50000 [00:00<?, ?it/s]  0%|          | 1/50000 [00:04<60:01:39,  4.32s/it][2024-11-08 01:06:41,179] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/dreamyou070/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+ -- trained model save --
+
+  0%|          | 0/6 [00:00<?, ?it/s][A
+ 17%|█▋        | 1/6 [00:01<00:07,  1.58s/it][A
+ 33%|███▎      | 2/6 [00:02<00:04,  1.19s/it][A
+ 50%|█████     | 3/6 [00:03<00:03,  1.13s/it][A
+ 67%|██████▋   | 4/6 [00:04<00:02,  1.14s/it][A
+ 83%|████████▎ | 5/6 [00:05<00:01,  1.11s/it][A
+100%|██████████| 6/6 [00:06<00:00,  1.08s/it][A100%|██████████| 6/6 [00:06<00:00,  1.13s/it]
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_only_transformer_cal.py", line 609, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_only_transformer_cal.py", line 492, in main
+[rank1]:     accelerator.backward(total_loss)
+[rank1]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/accelerator.py", line 2241, in backward
+[rank1]:     loss.backward(**kwargs)
+[rank1]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/_tensor.py", line 581, in backward
+[rank1]:     torch.autograd.backward(
+[rank1]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/autograd/__init__.py", line 347, in backward
+[rank1]:     _engine_run_backward(
+[rank1]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/autograd/graph.py", line 825, in _engine_run_backward
+[rank1]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank1]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 GiB. GPU 0 has a total capacity of 79.26 GiB of which 1.70 GiB is free. Including non-PyTorch memory, this process has 30.85 GiB memory in use. Process 2144237 has 46.69 GiB memory in use. Of the allocated memory 26.92 GiB is allocated by PyTorch, and 3.42 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+W1108 01:07:01.662313 2144078 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 2144237 closing signal SIGTERM
+E1108 01:07:02.632804 2144078 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 1 (pid: 2144238) of binary: /home/dreamyou070/.conda/envs/venv_prun3/bin/python3.9
+Traceback (most recent call last):
+  File "/home/dreamyou070/.conda/envs/venv_prun3/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/commands/launch.py", line 1159, in launch_command
+    multi_gpu_launcher(args)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/accelerate/commands/launch.py", line 793, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+distill_with_simple_only_transformer_cal.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-11-08_01:07:01
+  host      : node41.localdomain
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2144238)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

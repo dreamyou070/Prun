@@ -1,0 +1,16 @@
+{"time":"2024-11-07T23:15:33.692009507+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T23:15:33.692024367+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_231533-tfclf3hx/logs/debug-core.log"}
+{"time":"2024-11-07T23:15:33.814316629+09:00","level":"INFO","msg":"created new stream","id":"tfclf3hx"}
+{"time":"2024-11-07T23:15:33.814343679+09:00","level":"INFO","msg":"stream: started","id":"tfclf3hx"}
+{"time":"2024-11-07T23:15:33.814388489+09:00","level":"INFO","msg":"sender: started","stream_id":"tfclf3hx"}
+{"time":"2024-11-07T23:15:33.814359289+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"tfclf3hx"}}
+{"time":"2024-11-07T23:15:33.814399109+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"tfclf3hx"}}
+{"time":"2024-11-07T23:15:34.254803533+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T23:16:11.370009626+09:00","level":"INFO","msg":"stream: closing","id":"tfclf3hx"}
+{"time":"2024-11-07T23:16:11.370059396+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T23:16:11.370783638+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-07T23:16:12.461760997+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-07T23:16:13.393701657+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"tfclf3hx"}}
+{"time":"2024-11-07T23:16:13.393734237+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"tfclf3hx"}}
+{"time":"2024-11-07T23:16:13.393772367+09:00","level":"INFO","msg":"sender: closed","stream_id":"tfclf3hx"}
+{"time":"2024-11-07T23:16:13.437260001+09:00","level":"INFO","msg":"stream: closed","id":"tfclf3hx"}

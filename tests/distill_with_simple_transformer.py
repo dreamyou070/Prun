@@ -29,7 +29,7 @@ from diffusers.utils import export_to_gif, export_to_video
 import GPUtil
 from diffusers.utils import check_min_version
 from prun.utils.block_info import total_blocks, total_blocks_dot
-
+from prun.utils.diffusion_misc import *
 class SimpleAttention(nn.Module):
     def __init__(self, dim, heads=8, layer_name=""):
         super().__init__()
@@ -52,7 +52,7 @@ class SimpleAttention(nn.Module):
                 encoder_hidden_states: Optional[torch.LongTensor] = None,
                 timestep: Optional[torch.LongTensor] = None,
                 class_labels: torch.LongTensor = None,
-                num_frames: int = 1,
+                num_frames: int = 16,
                 cross_attention_kwargs: Optional[Dict[str, Any]] = None,
                 return_dict: bool = True, ) -> TransformerTemporalModelOutput:
         # [1] reshaping
@@ -85,7 +85,6 @@ class SimpleAttention(nn.Module):
         output = out + residual
         if not return_dict:
             return (output,)
-
         return TransformerTemporalModelOutput(sample=output)
 class DDIMSolver:
     def __init__(self, alpha_cumprods, timesteps=1000, ddim_timesteps=50):
@@ -198,6 +197,8 @@ def main(args) :
     print(f'\n step 4. noise scheduler and solver')
     noise_scheduler = DDPMScheduler.from_pretrained(args.pretrained_teacher_model,
                                                     subfolder="scheduler")
+    alpha_schedule = torch.sqrt(noise_scheduler.alphas_cumprod)
+    sigma_schedule = torch.sqrt(1 - noise_scheduler.alphas_cumprod)
     solver = DDIMSolver(noise_scheduler.alphas_cumprod.numpy(), timesteps=noise_scheduler.config.num_train_timesteps, ddim_timesteps=args.num_ddim_timesteps, )
 
     print(f'\n step 5. model and pipe')
@@ -277,6 +278,8 @@ def main(args) :
     text_encoder = text_encoder.to(device=device, dtype=weight_dtype)
     tokenizer = teacher_pipe.tokenizer
     solver = solver.to(device=device)
+    alpha_schedule = alpha_schedule.to(device=device, dtype=weight_dtype)
+    sigma_schedule = sigma_schedule.to(device=device, dtype=weight_dtype)
 
     print(f'\n step 4. optimizer')
     trainable_params = []
@@ -350,7 +353,7 @@ def main(args) :
 
                     # 2. time step
                     topk = noise_scheduler.config.num_train_timesteps // args.num_ddim_timesteps
-                    index = torch.randint(0, args.num_ddim_timesteps, (bsz,), device=latents.device).long()
+                    index = torch.randint(0, args.num_ddim_timesteps, (bsz,), device=latents.device).long().to('cpu')
                     start_timesteps = solver.ddim_timesteps[index] # Here Problem
                     timesteps = start_timesteps - topk
                     timesteps = torch.where(timesteps < 0, torch.zeros_like(timesteps), timesteps)
@@ -371,18 +374,35 @@ def main(args) :
                     teacher_output = teacher_unet(noisy_model_input.to(dtype=weight_dtype),
                                                   timesteps,
                                                   prompt_embeds).sample
+                    teacher_pred_x0 = get_predicted_original_sample(teacher_output,
+                                                                    timesteps, noisy_model_input,
+                                                                    noise_scheduler.config.prediction_type,
+                                                                    alpha_schedule,
+                                                                    sigma_schedule, )
 
                 inputs_student = []
                 outputs_student = []
                 student_output = student_unet(noisy_model_input.to(dtype=weight_dtype),
                                               timesteps, prompt_embeds).sample
+                student_pred_x0 = get_predicted_original_sample(student_output,
+                                                                timesteps, noisy_model_input,
+                                                                noise_scheduler.config.prediction_type,
+                                                                 alpha_schedule,
+                                                                 sigma_schedule, )
 
                 # [1] distill loss
                 if args.loss_type == "l2":
                     distill_loss = F.mse_loss(student_output.float(), teacher_output.float(), reduction="mean")
+                    if args.loss_in_pixel :
+                        distill_loss = F.mse_loss(student_pred_x0.float(),
+                                                  teacher_pred_x0.float(),
+                                                  reduction="mean")
                 elif args.loss_type == "huber":
                     distill_loss = torch.mean(torch.sqrt(
                         (student_output.float() - teacher_output.float()) ** 2 + args.huber_c ** 2) - args.huber_c)
+                    if args.loss_in_pixel :
+                        distill_loss = torch.mean(torch.sqrt(
+                            (student_pred_x0.float() - teacher_pred_x0.float()) ** 2 + args.huber_c ** 2) - args.huber_c)
 
                 # [2] feature matching loss
                 feature_loss = 0
@@ -398,58 +418,60 @@ def main(args) :
                 inputs_student.clear()
                 outputs_student.clear()
 
-                # [3] total loss
-                total_loss = distill_loss + args.feature_matching_loss_weight * feature_loss
+                # [3] total loss (Here Problem)
+                device = feature_loss.device
+                total_loss = distill_loss.to(device) + args.feature_matching_loss_weight * feature_loss
                 optimizer.zero_grad()
                 accelerator.backward(total_loss)
                 optimizer.step()
 
                 if is_main_process:
-                    print(F' [main process] total_loss = {total_loss} device = {total_loss.device}')
                     wandb.log({"distill_loss": distill_loss.detach().item(),
                                "feature_loss": feature_loss.detach().item(),
                                "total_loss": total_loss.detach().item()}, step=global_step)
-                    print(f' main process, lr step')
                     lr_scheduler.step()
                     progress_bar.update(1)
                     global_step += 1
-                break
 
-        # save model
-        if is_main_process:
-            save_model = accelerator.unwrap_model(student_unet)
-            save_folder = os.path.join(args.output_dir, "student_model")
-            os.makedirs(save_folder, exist_ok=True)
-            save_dir = os.path.join(save_folder, f"student_model_{epoch+1}.pt")
-            print(f' -- trained model save --')
-            torch.save(save_model.state_dict(), save_dir)
-            custom_prompt_dir = '/home/dreamyou070/Prun/src/prun/configs/prompts.txt'
-            with open(custom_prompt_dir, 'r') as f:
-                custom_prompts = f.readlines()
 
-            teacher_pipe.unet = save_model
-            eval_pipe = deepcopy(teacher_pipe)
-            save_folder = os.path.join(args.output_dir, "evaluation")
-            os.makedirs(save_folder, exist_ok=True)
-            epoch_folder = os.path.join(save_folder, f"epoch_{epoch+1}")
-            os.makedirs(epoch_folder, exist_ok=True)
-            n_prompt = "bad quality, worse quality, low resolution"
-            num_frames = 16
-            guidance_scale = 1.5
-            num_inference_steps = 6
-            for prompt in custom_prompts:
-                evaluation(prompt,
-                           eval_pipe,
-                           None,
-                           epoch_folder,
-                           n_prompt = n_prompt,
-                           num_frames=num_frames,
-                           guidance_scale=guidance_scale,
-                           num_inference_steps=num_inference_steps,
-                           h=512,
-                           weight_dtype=weight_dtype,
-                           p=0)
-                exit()
+            # -------------------------------------------------------------------------------------------------- #
+            # save model
+            save_interval = 5000
+            if is_main_process and global_step % save_interval == 1 :
+                save_model = accelerator.unwrap_model(student_unet)
+                save_folder = os.path.join(args.output_dir, "student_model")
+                os.makedirs(save_folder, exist_ok=True)
+                save_dir = os.path.join(save_folder, f"student_model_{global_step}.pt")
+                print(f' -- trained model save --')
+                torch.save(save_model.state_dict(), save_dir)
+                custom_prompt_dir = '/home/dreamyou070/Prun/src/prun/configs/prompts.txt'
+                with open(custom_prompt_dir, 'r') as f:
+                    custom_prompts = f.readlines()
+                teacher_pipe.unet = save_model
+                eval_pipe = deepcopy(teacher_pipe)
+                save_folder = os.path.join(args.output_dir, "evaluation")
+                os.makedirs(save_folder, exist_ok=True)
+                epoch_folder = os.path.join(save_folder, f"epoch_{global_step}")
+                os.makedirs(epoch_folder, exist_ok=True)
+                n_prompt = "bad quality, worse quality, low resolution"
+                num_frames = 16
+                guidance_scale = 1.5
+                num_inference_steps = 6
+                for p, prompt in enumerate(custom_prompts) :
+                    if p < 5 :
+                        evaluation(prompt,
+                                   eval_pipe,
+                                   None,
+                                   epoch_folder,
+                                   n_prompt = n_prompt,
+                                   num_frames=num_frames,
+                                   guidance_scale=guidance_scale,
+                                   num_inference_steps=num_inference_steps,
+                                   h=512,
+                                   weight_dtype=weight_dtype,
+                                   p=p)
+                del eval_pipe
+
 
 
 if __name__ == "__main__":
@@ -515,6 +537,8 @@ if __name__ == "__main__":
                         help="The huber loss parameter. Only used if `--loss_type=huber`.", )
     parser.add_argument("--feature_matching_loss_weight", type=float, default=1.0)
     parser.add_argument("--max_grad_norm", default=1.0, type=float, help="Max gradient norm.")
+    parser.add_argument("--loss_in_pixel", action="store_true", default=False,
+                        help="Scale the learning rate by the number of GPUs, gradient accumulation steps, and batch size.", )
 
     args = parser.parse_args()
     main(args)

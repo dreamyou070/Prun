@@ -1,0 +1,16 @@
+{"time":"2024-11-07T23:22:37.78294703+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T23:22:37.78296559+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_232237-tivsv18r/logs/debug-core.log"}
+{"time":"2024-11-07T23:22:37.93727709+09:00","level":"INFO","msg":"created new stream","id":"tivsv18r"}
+{"time":"2024-11-07T23:22:37.93733982+09:00","level":"INFO","msg":"stream: started","id":"tivsv18r"}
+{"time":"2024-11-07T23:22:37.93745746+09:00","level":"INFO","msg":"sender: started","stream_id":"tivsv18r"}
+{"time":"2024-11-07T23:22:37.93736862+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"tivsv18r"}}
+{"time":"2024-11-07T23:22:37.93737429+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"tivsv18r"}}
+{"time":"2024-11-07T23:22:38.7985698+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T23:23:20.539476335+09:00","level":"INFO","msg":"stream: closing","id":"tivsv18r"}
+{"time":"2024-11-07T23:23:20.539531405+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T23:23:20.540465237+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-07T23:23:21.532534381+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-07T23:23:22.213175959+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"tivsv18r"}}
+{"time":"2024-11-07T23:23:22.213230569+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"tivsv18r"}}
+{"time":"2024-11-07T23:23:22.213246279+09:00","level":"INFO","msg":"sender: closed","stream_id":"tivsv18r"}
+{"time":"2024-11-07T23:23:22.243174431+09:00","level":"INFO","msg":"stream: closed","id":"tivsv18r"}

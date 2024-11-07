@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #SBATCH --job-name=animatelcm_finetune_LCM_FeatureMatching
-#SBATCH --output=/home/dreamyou070/Prun/logs/animatelcm_finetune_LCM_FeatureMatching.log
-#SBATCH --error=/home/dreamyou070/Prun/logs/animatelcm_finetune_LCM_FeatureMatching.log
+#SBATCH --output=/home/dreamyou070/Prun/logs/animatelcm_finetune_prun_10_searched_by_latent_openvid_data_simple_transformer_distill_pixel_space_feature_matching.log
+#SBATCH --error=/home/dreamyou070/Prun/logs/animatelcm_finetune_prun_10_searched_by_latent_openvid_data_simple_transformer_distill_pixel_space_feature_matching.log
 #SBATCH --time=48:00:00
-port_number=55553
+port_number=58569
 # 11 / [0,1,2,3,4,13,14,15,16,17,18]
 # 10 / [0,1,2,3,4,13,14,16,17,18]
 # 9 / [0,1,2,3,4,13,14,17,18]
@@ -13,10 +13,10 @@ port_number=55553
 # find_unused_parameters: true
 
 target_block_num=10
-FOLDER="animatelcm_finetune_prun_10_searched_by_latent_openvid_data_simple_transformer_distill_feature_matching"
+FOLDER="animatelcm_finetune_prun_10_searched_by_latent_openvid_data_simple_transformer_distill_pixel_space_feature_matching"
 
 accelerate launch \
- --config_file $HOME/gpu_config/gpu_0_1_2_config \
+ --config_file $HOME/gpu_config/gpu_0_1_config \
  --main_process_port $port_number \
  distill_with_simple_transformer.py \
  --wandb_run_name "openvid_data_distill_feature_matching" \
@@ -28,4 +28,10 @@ accelerate launch \
  --datavideo_size 512 \
  --architecture "[0, 1, 2, 3, 4, 13, 14, 16, 17, 18]" \
  --start_epoch 0 \
- --num_train_epochs 3
+ --num_train_epochs 3 \
+ --loss_in_pixel \
+ --max_train_steps 5000000
+
+ # max_train_steps
+# sbatch -p suma_a100_1 -q a100_1_qos --gres=gpu:2 --time=48:00:00 distill_with_simple_transformer.sh
+

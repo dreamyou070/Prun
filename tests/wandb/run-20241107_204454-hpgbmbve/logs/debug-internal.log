@@ -1,0 +1,11 @@
+{"time":"2024-11-07T20:44:54.867147038+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T20:44:54.867165708+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_204454-hpgbmbve/logs/debug-core.log"}
+{"time":"2024-11-07T20:44:55.046092676+09:00","level":"INFO","msg":"created new stream","id":"hpgbmbve"}
+{"time":"2024-11-07T20:44:55.046125726+09:00","level":"INFO","msg":"stream: started","id":"hpgbmbve"}
+{"time":"2024-11-07T20:44:55.046412897+09:00","level":"INFO","msg":"sender: started","stream_id":"hpgbmbve"}
+{"time":"2024-11-07T20:44:55.046193666+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"hpgbmbve"}}
+{"time":"2024-11-07T20:44:55.046230346+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"hpgbmbve"}}
+{"time":"2024-11-07T20:44:55.651721169+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T20:46:48.780273893+09:00","level":"INFO","msg":"stream: closing","id":"hpgbmbve"}
+{"time":"2024-11-07T20:46:48.780410873+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T20:46:48.788977134+09:00","level":"INFO","msg":"Stopped system monitor"}

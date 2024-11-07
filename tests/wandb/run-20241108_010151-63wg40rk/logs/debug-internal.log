@@ -1,0 +1,11 @@
+{"time":"2024-11-08T01:01:51.508415195+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-08T01:01:51.508431265+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241108_010151-63wg40rk/logs/debug-core.log"}
+{"time":"2024-11-08T01:01:51.622530367+09:00","level":"INFO","msg":"created new stream","id":"63wg40rk"}
+{"time":"2024-11-08T01:01:51.622568497+09:00","level":"INFO","msg":"stream: started","id":"63wg40rk"}
+{"time":"2024-11-08T01:01:51.622637547+09:00","level":"INFO","msg":"sender: started","stream_id":"63wg40rk"}
+{"time":"2024-11-08T01:01:51.622611397+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"63wg40rk"}}
+{"time":"2024-11-08T01:01:51.622655007+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"63wg40rk"}}
+{"time":"2024-11-08T01:01:52.004326219+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-08T01:02:14.094713814+09:00","level":"INFO","msg":"stream: closing","id":"63wg40rk"}
+{"time":"2024-11-08T01:02:14.094867894+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-08T01:02:14.095804276+09:00","level":"INFO","msg":"Stopped system monitor"}

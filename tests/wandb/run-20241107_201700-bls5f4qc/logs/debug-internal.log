@@ -1,0 +1,12 @@
+{"time":"2024-11-07T20:17:00.090786846+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T20:17:00.090801186+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_201700-bls5f4qc/logs/debug-core.log"}
+{"time":"2024-11-07T20:17:00.210014815+09:00","level":"INFO","msg":"created new stream","id":"bls5f4qc"}
+{"time":"2024-11-07T20:17:00.210052725+09:00","level":"INFO","msg":"stream: started","id":"bls5f4qc"}
+{"time":"2024-11-07T20:17:00.210136226+09:00","level":"INFO","msg":"sender: started","stream_id":"bls5f4qc"}
+{"time":"2024-11-07T20:17:00.210096786+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"bls5f4qc"}}
+{"time":"2024-11-07T20:17:00.210146006+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"bls5f4qc"}}
+{"time":"2024-11-07T20:17:01.073781211+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T20:17:38.637666609+09:00","level":"WARN","msg":"handler: ignoring partial history record","step":-1,"current":0}
+{"time":"2024-11-07T20:18:49.938331054+09:00","level":"INFO","msg":"stream: closing","id":"bls5f4qc"}
+{"time":"2024-11-07T20:18:49.938413074+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T20:18:49.939767997+09:00","level":"INFO","msg":"Stopped system monitor"}

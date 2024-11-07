@@ -1,0 +1,87 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...:  67%|████████████████████████████████████████████████████████████▋                              | 4/6 [00:01<00:00,  3.34it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  3.91it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|███████████████████████████████████████████████████████████████████████████████████████████| 6/6 [00:01<00:00,  4.55it/s]
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_only_transformer_cal.py", line 605, in <module>
+    args = parser.parse_args()
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_only_transformer_cal.py", line 286, in main
+    student_pipe.scheduler = LCMScheduler.from_config(student_pipe.scheduler.config, beta_schedule="linear")
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/lora.py", line 120, in load_lora_weights
+    self.load_lora_into_unet(
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/lora.py", line 402, in load_lora_into_unet
+    unet.load_attn_procs(
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/unet.py", line 217, in load_attn_procs
+    is_model_cpu_offload, is_sequential_cpu_offload = self._process_lora(
+  File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/unet.py", line 350, in _process_lora
+    inject_adapter_in_model(lora_config, self, adapter_name=adapter_name)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/mapping.py", line 227, in inject_adapter_in_model
+    peft_model = tuner_cls(model, peft_config, adapter_name=adapter_name, low_cpu_mem_usage=low_cpu_mem_usage)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/model.py", line 141, in __init__
+    super().__init__(model, config, adapter_name, low_cpu_mem_usage=low_cpu_mem_usage)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/tuners_utils.py", line 184, in __init__
+    self.inject_adapter(self.model, adapter_name, low_cpu_mem_usage=low_cpu_mem_usage)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/tuners_utils.py", line 496, in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/model.py", line 226, in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/model.py", line 344, in _create_new_module
+    new_module = dispatcher(target, adapter_name, lora_config=lora_config, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 1138, in dispatch_default
+    new_module = Conv2d(target, adapter_name, **kwargs)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 872, in __init__
+    self.update_layer(
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 909, in update_layer
+    self.reset_lora_parameters(adapter_name, init_lora_weights)
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 157, in reset_lora_parameters
+    nn.init.kaiming_uniform_(self.lora_A[adapter_name].weight, a=math.sqrt(5))
+  File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/init.py", line 518, in kaiming_uniform_
+    return tensor.uniform_(-bound, bound, generator=generator)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_only_transformer_cal.py", line 605, in <module>
+[rank0]:     args = parser.parse_args()
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_only_transformer_cal.py", line 286, in main
+[rank0]:     student_pipe.scheduler = LCMScheduler.from_config(student_pipe.scheduler.config, beta_schedule="linear")
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/lora.py", line 120, in load_lora_weights
+[rank0]:     self.load_lora_into_unet(
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/lora.py", line 402, in load_lora_into_unet
+[rank0]:     unet.load_attn_procs(
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/unet.py", line 217, in load_attn_procs
+[rank0]:     is_model_cpu_offload, is_sequential_cpu_offload = self._process_lora(
+[rank0]:   File "/home/dreamyou070/Prun/src/prun/third_party/diffusers/src/diffusers/loaders/unet.py", line 350, in _process_lora
+[rank0]:     inject_adapter_in_model(lora_config, self, adapter_name=adapter_name)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/mapping.py", line 227, in inject_adapter_in_model
+[rank0]:     peft_model = tuner_cls(model, peft_config, adapter_name=adapter_name, low_cpu_mem_usage=low_cpu_mem_usage)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/model.py", line 141, in __init__
+[rank0]:     super().__init__(model, config, adapter_name, low_cpu_mem_usage=low_cpu_mem_usage)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/tuners_utils.py", line 184, in __init__
+[rank0]:     self.inject_adapter(self.model, adapter_name, low_cpu_mem_usage=low_cpu_mem_usage)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/tuners_utils.py", line 496, in inject_adapter
+[rank0]:     self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/model.py", line 226, in _create_and_replace
+[rank0]:     new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/model.py", line 344, in _create_new_module
+[rank0]:     new_module = dispatcher(target, adapter_name, lora_config=lora_config, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 1138, in dispatch_default
+[rank0]:     new_module = Conv2d(target, adapter_name, **kwargs)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 872, in __init__
+[rank0]:     self.update_layer(
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 909, in update_layer
+[rank0]:     self.reset_lora_parameters(adapter_name, init_lora_weights)
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/peft/tuners/lora/layer.py", line 157, in reset_lora_parameters
+[rank0]:     nn.init.kaiming_uniform_(self.lora_A[adapter_name].weight, a=math.sqrt(5))
+[rank0]:   File "/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/torch/nn/init.py", line 518, in kaiming_uniform_
+[rank0]:     return tensor.uniform_(-bound, bound, generator=generator)
+[rank0]: KeyboardInterrupt

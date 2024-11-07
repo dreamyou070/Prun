@@ -1,0 +1,11 @@
+{"time":"2024-11-08T01:01:08.131040099+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-08T01:01:08.131057739+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241108_010108-n6vc9jy0/logs/debug-core.log"}
+{"time":"2024-11-08T01:01:08.24479708+09:00","level":"INFO","msg":"created new stream","id":"n6vc9jy0"}
+{"time":"2024-11-08T01:01:08.24484231+09:00","level":"INFO","msg":"stream: started","id":"n6vc9jy0"}
+{"time":"2024-11-08T01:01:08.2449619+09:00","level":"INFO","msg":"sender: started","stream_id":"n6vc9jy0"}
+{"time":"2024-11-08T01:01:08.24495232+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"n6vc9jy0"}}
+{"time":"2024-11-08T01:01:08.24491665+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"n6vc9jy0"}}
+{"time":"2024-11-08T01:01:08.696681477+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-08T01:01:36.190278327+09:00","level":"INFO","msg":"stream: closing","id":"n6vc9jy0"}
+{"time":"2024-11-08T01:01:36.190416367+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-08T01:01:36.191063448+09:00","level":"INFO","msg":"Stopped system monitor"}

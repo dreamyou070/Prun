@@ -1,0 +1,251 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+
+ step 5. model and pipe
+ (1) teacher pipe
+Loading pipeline components...:  33%|███▎      | 2/6 [00:00<00:01,  2.07it/s]/home/dreamyou070/.conda/envs/venv_prun3/lib/python3.9/site-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(
+Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  3.90it/s]
+ (2) student pipe
+Loading pipeline components...: 100%|██████████| 6/6 [00:01<00:00,  4.78it/s]
+final_name = down_blocks_2_motion_modules_1 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_0 in skip_layers
+setting simple attention
+final_name = down_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_0_motion_modules_2 in skip_layers
+setting simple attention
+final_name = up_blocks_1_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_2_motion_modules_0 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_1 in skip_layers
+setting simple attention
+final_name = up_blocks_3_motion_modules_2 in skip_layers
+setting simple attention
+final_name = mid_block_motion_modules_0 in skip_layers
+setting simple attention
+ (3) sub models
+
+ step 4. optimizer
+ step 5. make dataloader
+loading annotations from /scratch2/dreamyou070/MyData/video/openvid_1M_sample.csv ...
+ step 7. accelerator prepare
+ ***** student_unet gradient checkpointing *****
+ step 8. train
+  0%|          | 15/50000 [00:55<49:05:27,  3.54s/it]
+ [main process] total_loss = 2.476613998413086 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.1831514835357666 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.7837116718292236 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.367180109024048 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.237367630004883 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.913064956665039 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.1154563426971436 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.0721933841705322 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9670803546905518 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 3.1852033138275146 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.3890902996063232 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.755263090133667 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9921255111694336 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.036196708679199 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.2584822177886963 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.7666938304901123 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.4327287673950195 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.3515114784240723 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.4195101261138916 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.08111834526062 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.0641748905181885 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.8655290603637695 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.416637897491455 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.5853993892669678 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.593360185623169 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.8603894710540771 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.783907175064087 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.7640042304992676 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 3.4494316577911377 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.676370620727539 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.8577444553375244 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.795668125152588 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.2779150009155273 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.5271928310394287 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9873712062835693 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.592349052429199 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.1805551052093506 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9863910675048828 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9833341836929321 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.767907738685608 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.46647572517395 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.520261287689209 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.862243413925171 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.6692938804626465 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.7817630767822266 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.6126998662948608 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 3.0718626976013184 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.3265624046325684 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.671461582183838 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9726108312606812 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.6387625932693481 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.3889334201812744 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.201517343521118 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.5957595109939575 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9734517335891724 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.355151653289795 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.3422021865844727 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.6046861410140991 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9151726961135864 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.458589792251587 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.0558292865753174 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9057273864746094 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.4435975551605225 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.36857533454895 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.7777701616287231 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.7489423751831055 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.5226128101348877 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.1230382919311523 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.9906163215637207 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.2535617351531982 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.6342049837112427 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.563678503036499 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.968055009841919 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.8202284574508667 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.2166154384613037 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.842105746269226 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.8438520431518555 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 3.0096678733825684 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.5433292388916016 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.8060986995697021 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 3.0451912879943848 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.6703474521636963 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.276160717010498 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.8383021354675293 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.097708225250244 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.6888885498046875 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.7761728763580322 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.54788875579834 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.866368055343628 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 3.5378198623657227 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.859918475151062 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.063948154449463 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.630314826965332 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.0824060440063477 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.5986387729644775 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.7364848852157593 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.7042150497436523 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 1.6501020193099976 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.111567258834839 device = cuda:0
+ main process, lr step
+ [main process] total_loss = 2.132065534591675 device = cuda:0
+ main process, lr step
+[2024-11-07 19:59:14,858] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/dreamyou070/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+ -- trained model save --
+100%|██████████| 6/6 [00:05<00:00,  1.08it/s]
+100%|██████████| 6/6 [00:05<00:00,  1.12it/s]
+100%|██████████| 6/6 [00:04<00:00,  1.20it/s]
+100%|██████████| 6/6 [00:05<00:00,  1.10it/s]
+100%|██████████| 6/6 [00:05<00:00,  1.37it/s]
+  0%|          | 0/6 [00:00<?, ?it/s]

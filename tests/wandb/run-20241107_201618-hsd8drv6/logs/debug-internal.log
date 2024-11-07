@@ -1,0 +1,8 @@
+{"time":"2024-11-07T20:16:18.524063308+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T20:16:18.524086648+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_201618-hsd8drv6/logs/debug-core.log"}
+{"time":"2024-11-07T20:16:18.657667137+09:00","level":"INFO","msg":"created new stream","id":"hsd8drv6"}
+{"time":"2024-11-07T20:16:18.657827098+09:00","level":"INFO","msg":"stream: started","id":"hsd8drv6"}
+{"time":"2024-11-07T20:16:18.657763818+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"hsd8drv6"}}
+{"time":"2024-11-07T20:16:18.657862778+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"hsd8drv6"}}
+{"time":"2024-11-07T20:16:18.658005208+09:00","level":"INFO","msg":"sender: started","stream_id":"hsd8drv6"}
+{"time":"2024-11-07T20:16:19.237097599+09:00","level":"INFO","msg":"Starting system monitor"}

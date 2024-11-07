@@ -1,0 +1,12 @@
+{"time":"2024-11-08T01:02:29.873267418+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-08T01:02:29.873280808+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241108_010229-9io53xah/logs/debug-core.log"}
+{"time":"2024-11-08T01:02:30.005047199+09:00","level":"INFO","msg":"created new stream","id":"9io53xah"}
+{"time":"2024-11-08T01:02:30.005118669+09:00","level":"INFO","msg":"stream: started","id":"9io53xah"}
+{"time":"2024-11-08T01:02:30.005166519+09:00","level":"INFO","msg":"sender: started","stream_id":"9io53xah"}
+{"time":"2024-11-08T01:02:30.005146999+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"9io53xah"}}
+{"time":"2024-11-08T01:02:30.005150669+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"9io53xah"}}
+{"time":"2024-11-08T01:02:30.396758473+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-08T01:02:56.806823961+09:00","level":"INFO","msg":"stream: closing","id":"9io53xah"}
+{"time":"2024-11-08T01:02:56.806913262+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-08T01:02:56.807548623+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-08T01:02:57.788599828+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}

@@ -1,0 +1,8 @@
+{"time":"2024-11-08T00:56:55.704634201+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-08T00:56:55.704648761+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241108_005655-lew74z5s/logs/debug-core.log"}
+{"time":"2024-11-08T00:56:55.830466099+09:00","level":"INFO","msg":"created new stream","id":"lew74z5s"}
+{"time":"2024-11-08T00:56:55.830516099+09:00","level":"INFO","msg":"stream: started","id":"lew74z5s"}
+{"time":"2024-11-08T00:56:55.830581889+09:00","level":"INFO","msg":"sender: started","stream_id":"lew74z5s"}
+{"time":"2024-11-08T00:56:55.830560389+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"lew74z5s"}}
+{"time":"2024-11-08T00:56:55.830554879+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"lew74z5s"}}
+{"time":"2024-11-08T00:56:56.626921707+09:00","level":"INFO","msg":"Starting system monitor"}

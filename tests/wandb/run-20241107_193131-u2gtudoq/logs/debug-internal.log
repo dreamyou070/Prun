@@ -1,0 +1,16 @@
+{"time":"2024-11-07T19:31:31.336946523+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T19:31:31.336960043+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_193131-u2gtudoq/logs/debug-core.log"}
+{"time":"2024-11-07T19:31:31.458095043+09:00","level":"INFO","msg":"created new stream","id":"u2gtudoq"}
+{"time":"2024-11-07T19:31:31.458141233+09:00","level":"INFO","msg":"stream: started","id":"u2gtudoq"}
+{"time":"2024-11-07T19:31:31.458179163+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"u2gtudoq"}}
+{"time":"2024-11-07T19:31:31.458247663+09:00","level":"INFO","msg":"sender: started","stream_id":"u2gtudoq"}
+{"time":"2024-11-07T19:31:31.458272683+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"u2gtudoq"}}
+{"time":"2024-11-07T19:31:32.609165172+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-07T19:32:36.135194853+09:00","level":"INFO","msg":"stream: closing","id":"u2gtudoq"}
+{"time":"2024-11-07T19:32:36.135338243+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2024-11-07T19:32:36.136190735+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2024-11-07T19:32:40.617831439+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2024-11-07T19:32:40.957604114+09:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"u2gtudoq"}}
+{"time":"2024-11-07T19:32:40.957650254+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"u2gtudoq"}}
+{"time":"2024-11-07T19:32:40.957696434+09:00","level":"INFO","msg":"sender: closed","stream_id":"u2gtudoq"}
+{"time":"2024-11-07T19:32:40.958674177+09:00","level":"INFO","msg":"stream: closed","id":"u2gtudoq"}

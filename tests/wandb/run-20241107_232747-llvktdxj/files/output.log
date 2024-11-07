@@ -1,0 +1,15 @@
+ step 3. weight and device
+
+ step 4. noise scheduler and solver
+Traceback (most recent call last):
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 539, in <module>
+    main(args)
+  File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 200, in main
+    alpha_schedule = torch.sqrt(noise_scheduler.alphas_cumprod).to(device, dtype=weight_dtype)
+UnboundLocalError: local variable 'device' referenced before assignment
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 539, in <module>
+[rank0]:     main(args)
+[rank0]:   File "/home/dreamyou070/Prun/tests/distill_with_simple_transformer.py", line 200, in main
+[rank0]:     alpha_schedule = torch.sqrt(noise_scheduler.alphas_cumprod).to(device, dtype=weight_dtype)
+[rank0]: UnboundLocalError: local variable 'device' referenced before assignment

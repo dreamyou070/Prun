@@ -1,0 +1,8 @@
+{"time":"2024-11-07T23:00:25.770703223+09:00","level":"INFO","msg":"using version","core version":"0.18.5"}
+{"time":"2024-11-07T23:00:25.770719453+09:00","level":"INFO","msg":"created symlink","path":"/home/dreamyou070/Prun/tests/wandb/run-20241107_230025-gcmtbiev/logs/debug-core.log"}
+{"time":"2024-11-07T23:00:25.885804918+09:00","level":"INFO","msg":"created new stream","id":"gcmtbiev"}
+{"time":"2024-11-07T23:00:25.885845308+09:00","level":"INFO","msg":"stream: started","id":"gcmtbiev"}
+{"time":"2024-11-07T23:00:25.885947709+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"gcmtbiev"}}
+{"time":"2024-11-07T23:00:25.885925609+09:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"gcmtbiev"}}
+{"time":"2024-11-07T23:00:25.886057529+09:00","level":"INFO","msg":"sender: started","stream_id":"gcmtbiev"}
+{"time":"2024-11-07T23:00:26.35043465+09:00","level":"INFO","msg":"Starting system monitor"}
