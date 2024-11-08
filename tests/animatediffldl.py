@@ -97,10 +97,7 @@ class GeneticAlgorithm:
             self.original_state_dict = self.teacher_unet.state_dict()
         self.weight_dtype = weight_dtype
         self.init_architecture = init_architecture #[0,1,2,3,4,13,14,16,17,18]
-        print(f'init_architecture : {self.init_architecture}')
-        print(f'len of init_architecture : {len(self.init_architecture)}')
         self.target_block_num = target_block_num
-        print(f'target_block_num : {self.target_block_num}')
         assert len(self.init_architecture) == self.target_block_num, "Initial architecture must have the same number of blocks as the target block number"
 
         # [3] test
@@ -121,6 +118,7 @@ class GeneticAlgorithm:
         self.candidates = []
         self.max_prompt = max_prompt
 
+    from torchvision import models, transforms
     def _load_inceptionv3_model(self):
         #model = models.inception_v3(pretrained=True)
         model = models.inception_v3(weights=True)
@@ -426,20 +424,23 @@ def main(args) :
     print(f' step 1. get original model')
     device = "cuda"
     dtype = torch.float16
-    step = 4
-    repo = "ByteDance/AnimateDiff-Lightning"
-    ckpt = f"animatediff_lightning_{step}step_diffusers.safetensors"
-    base = "emilianJR/epiCRealism"  # Choose to your favorite base model.
     adapter = MotionAdapter().to(device, dtype)
-    adapter.load_state_dict(load_file(hf_hub_download(repo ,ckpt), device=device))
-    pipe = AnimateDiffPipeline.from_pretrained(base, motion_adapter=adapter, torch_dtype=dtype).to(device)
+    motion_path = '/home/jovyan/pretrained/AnimateDiff-Lightning/animatediff_lightning_4step_diffusers.safetensors'
+    adapter.load_state_dict(load_file(motion_path, device=device))
+    
+    model_path = '/home/jovyan/pretrained/epiCRealism'
+    pipe = AnimateDiffPipeline.from_pretrained(model_path, torch_dtype=dtype).to(device)
     pipe.scheduler = EulerDiscreteScheduler.from_config(pipe.scheduler.config, timestep_spacing="trailing", beta_schedule="linear")
 
     print(f' step 2. teacher model')
     teacher_adapter = MotionAdapter().to(device, dtype)
-    teacher_adapter.load_state_dict(load_file(hf_hub_download(repo, ckpt), device=device))
-    teacher_pipe = AnimateDiffPipeline.from_pretrained(base, motion_adapter=teacher_adapter, torch_dtype=dtype).to(device)
-    teacher_pipe.scheduler = EulerDiscreteScheduler.from_config(teacher_pipe.scheduler.config, timestep_spacing="trailing", beta_schedule="linear")
+    teacher_adapter.load_state_dict(load_file(motion_path, device=device))
+    teacher_pipe = AnimateDiffPipeline.from_pretrained(model_path,
+                                                       motion_adapter=teacher_adapter,
+                                                       torch_dtype=dtype).to(device)
+    teacher_pipe.scheduler = EulerDiscreteScheduler.from_config(teacher_pipe.scheduler.config,
+                                                                timestep_spacing="trailing",
+                                                                beta_schedule="linear")
 
     print(f' step 2. check blocks')
     unet = pipe.unet
@@ -460,7 +461,7 @@ def main(args) :
     print(f'len of motion_modules : {len(motion_modules)}') # 21
     total_control_blocks = attention_modules + motion_modules # 37
     print(f'total_control_blocks : {len(total_control_blocks)}')
-    custom_prompt_dir = '/home/dreamyou070/Prun/src/prun/configs/animal_filtered_webvid10m_test.txt'
+    custom_prompt_dir = '/home/jovyan/Prun/src/prun/configs/animal_filtered_webvid10m_test.txt'
     with open(custom_prompt_dir, 'r') as f:
         prompts = f.readlines()
 
@@ -490,7 +491,7 @@ def main(args) :
                  max_no_change=3,
                  init_architecture=init_architecture,
                  target_block_num=len(init_architecture),
-                 max_prompt=10)
+                 max_prompt=args.max_prompt)
     ga.set_reference()
     ga.evolve()
 
