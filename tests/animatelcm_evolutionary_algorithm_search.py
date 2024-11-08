@@ -500,8 +500,8 @@ def main(args):
     ga_searcher.evolve()
 
 
+if __name__ == "__main__" :
 
-if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--project', type=str, default='video_distill')
     parser.add_argument("--wandb", action="store_true")
