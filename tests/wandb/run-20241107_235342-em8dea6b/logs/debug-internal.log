@@ -6,3 +6,5 @@
 {"time":"2024-11-07T23:53:42.616776501+09:00","level":"INFO","msg":"handler: started","stream_id":{"value":"em8dea6b"}}
 {"time":"2024-11-07T23:53:42.616798011+09:00","level":"INFO","msg":"sender: started","stream_id":"em8dea6b"}
 {"time":"2024-11-07T23:53:58.716431902+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2024-11-08T09:59:45.089238593+09:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/dreamyou070/ondevice-video/em8dea6b/file_stream"}
+{"time":"2024-11-08T10:36:19.025987711+09:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/dreamyou070/ondevice-video/em8dea6b/file_stream"}

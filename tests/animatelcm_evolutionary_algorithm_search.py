@@ -19,8 +19,6 @@ import csv, json
 from safetensors.torch import save_file
 from safetensors import safe_open
 import numpy as np
-from prun.eval.VBench.vbench.motion_smoothness import MotionSmoothness
-from prun.utils.clip_score import ClipScorer
 from torchvision import models, transforms
 from prun.utils import arg_as_list
 import cv2

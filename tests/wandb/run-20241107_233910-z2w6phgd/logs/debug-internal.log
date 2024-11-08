@@ -9,3 +9,4 @@
 {"time":"2024-11-08T00:16:42.143011483+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
 {"time":"2024-11-08T02:50:44.673986981+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dreamyou070/ondevice-video/z2w6phgd/file_stream\": unexpected EOF"}
 {"time":"2024-11-08T06:37:15.103869168+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/dreamyou070/ondevice-video/z2w6phgd/file_stream\": unexpected EOF"}
+{"time":"2024-11-08T09:56:42.762743604+09:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
